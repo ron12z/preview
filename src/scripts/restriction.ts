@@ -42,4 +42,8 @@ class Restriction {
 
 const Restrictions: { [key: string]: string } = {};
 
+export const getRestrictions = () => {
+	return Restrictions;
+};
+
 export default Restriction;

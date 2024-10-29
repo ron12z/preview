@@ -1,25 +1,40 @@
 ---
-import Restriction from "../../scripts/restriction.ts";
-
-// const sa1 = new Restriction();
-
 const { restriction } = Astro.props;
 ---
 
-<div id={restriction.code} class="selection">
+<option-plain id={restriction.code} class="selection">
 	<p>{restriction.description}</p>
-</div>
+</option-plain>
 
-<script define:vars={{ restriction }}>
+<!-- <script define:vars={{ restriction }}>
 	const div = document.querySelector(`#${restriction.code}`);
 	div.addEventListener("click", () => {
 		div.classList.toggle("checked");
-		console.log(restriction);
+
+		if (div.classList.contains("checked")) {
+			restriction.addToRestrictions();
+		} else {
+			restriction.removeFromRestrictions();
+		}
 	});
+</script> -->
+
+<script>
+	class OptionPlain extends HTMLElement {
+		connectedCallback() {
+			this.addEventListener("click", () => {
+				this.classList.toggle("checked");
+			});
+			console.log(this);
+		}
+	}
+
+	customElements.define("option-plain", OptionPlain);
 </script>
 
 <style>
-	div {
+	option-plain {
+		display: block;
 		padding: 2rem;
 		background: lightblue;
 	}
