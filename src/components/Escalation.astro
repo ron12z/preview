@@ -7,9 +7,10 @@
 </div>
 
 <script>
-	const escalation = document.querySelector(".escalation");
-	escalation?.addEventListener("click", () => {
-		console.log("Escalation div clicked. Should copy to clipboard");
+	import Escalation from "../scripts/escalation";
+	const escalationDiv = document.querySelector(".escalation");
+	escalationDiv?.addEventListener("click", () => {
+		Escalation.updateResult();
 	});
 </script>
 
