@@ -7,13 +7,10 @@
 </div>
 
 <script>
-	import Escalation from "../scripts/escalation.js";
-
-	const escalationResult = document.querySelector("#escalation-result");
-	escalationResult!.textContent = Escalation.getEscalation();
-
-	const allChecked = document.querySelectorAll(".checked");
-	console.log(allChecked);
+	const escalation = document.querySelector(".escalation");
+	escalation?.addEventListener("click", () => {
+		console.log("Escalation div clicked. Should copy to clipboard");
+	});
 </script>
 
 <style>

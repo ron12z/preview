@@ -7,6 +7,11 @@ const { restriction } = Astro.props;
 </option-plain>
 
 <script>
+	import Escalation from "../../scripts/escalation";
+	document.querySelector("html")!.addEventListener("click", () => {
+		Escalation.updateResult();
+	});
+
 	class OptionPlain extends HTMLElement {
 		connectedCallback() {
 			this.addEventListener("click", () => {
@@ -23,5 +28,9 @@ const { restriction } = Astro.props;
 		display: block;
 		padding: 2rem;
 		background: lightblue;
+	}
+
+	.checked {
+		background: #21cf30;
 	}
 </style>

@@ -1,3 +1,5 @@
+import { getRestrictions } from "./restriction";
+
 const escalations = {};
 
 function addRestriction(key, value) {
@@ -30,8 +32,26 @@ function getEscalation() {
 	return result;
 }
 
+function updateResult() {
+	const allRestrictions = getRestrictions();
+
+	const escalationResult = document.querySelector("#escalation-result");
+	escalationResult.textContent = getEscalation();
+
+	const allChecked = document.querySelectorAll("option-plain.checked");
+
+	allChecked.forEach((option) => {
+		const id = option.getAttribute("id");
+		const restriction = allRestrictions[id];
+		addRestriction(restriction);
+	});
+
+	console.log(getEscalation());
+}
+
 export default {
 	addRestriction,
 	removeRestriction,
 	getEscalation,
+	updateResult,
 };
