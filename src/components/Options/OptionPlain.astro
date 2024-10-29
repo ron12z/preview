@@ -1,0 +1,26 @@
+---
+import Restriction from "../../scripts/restriction.ts";
+
+// const sa1 = new Restriction();
+
+const { restriction } = Astro.props;
+---
+
+<div id={restriction.code} class="selection">
+	<p>{restriction.description}</p>
+</div>
+
+<script define:vars={{ restriction }}>
+	const div = document.querySelector(`#${restriction.code}`);
+	div.addEventListener("click", () => {
+		div.classList.toggle("checked");
+		console.log(restriction);
+	});
+</script>
+
+<style>
+	div {
+		padding: 2rem;
+		background: lightblue;
+	}
+</style>

@@ -1,0 +1,13 @@
+---
+
+---
+
+<div class="escalation">
+	<p id="escalation-result">Escalations should go here</p>
+</div>
+
+<script>
+	import Escalation from "../scripts/escalation.js";
+	document.querySelector("#escalation-result")!.textContent =
+		Escalation.getEscalation();
+</script>
