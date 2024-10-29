@@ -1,0 +1,10 @@
+---
+import OptionPlain from "./OptionPlain.astro";
+import { getRestrictions } from "../../scripts/restriction.ts";
+
+const allRestrictions = getRestrictions();
+---
+
+<OptionPlain restriction={allRestrictions.sa1} />
+<OptionPlain restriction={allRestrictions.sa2} />
+<OptionPlain restriction={allRestrictions.threshold} />

@@ -29,10 +29,11 @@ class Restriction {
 		this.options = options;
 		this.numOfInputs = numOfInputs;
 		this.addMoreButton = addMoreButton;
+		this.addToRestrictions();
 	}
 
 	addToRestrictions() {
-		Restrictions[this.code] = this.description;
+		Restrictions[this.code] = this;
 	}
 
 	removeFromRestrictions() {
@@ -40,10 +41,38 @@ class Restriction {
 	}
 }
 
-const Restrictions: { [key: string]: string } = {};
+const Restrictions: { [key: string]: Restriction } = {};
 
 export const getRestrictions = () => {
 	return Restrictions;
 };
 
 export default Restriction;
+
+// Creating restrictions
+new Restriction({
+	code: "sa1",
+	description: "Suspicious Activity 1",
+	escalation: "Suspicious Activity 1 escal",
+	options: null,
+	numOfInputs: null,
+	addMoreButton: false,
+});
+
+new Restriction({
+	code: "sa2",
+	description: "Suspicious Activity 2",
+	escalation: "Suspicious Activity 2 escal",
+	options: null,
+	numOfInputs: null,
+	addMoreButton: false,
+});
+
+new Restriction({
+	code: "threshold",
+	description: "Threshold",
+	escalation: "Threshold escal",
+	options: null,
+	numOfInputs: null,
+	addMoreButton: false,
+});

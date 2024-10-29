@@ -1,17 +1,12 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import OptionPlain from "../components/Options/OptionPlain.astro";
-import Restriction from "../scripts/restriction";
 import Escalation from "../components/Escalation.astro";
+import OptionList from "../components/Options/OptionList.astro";
 
 const title = "Home Page";
-
-const sa1 = new Restriction();
-const sa2 = new Restriction({ code: "sa2" });
 ---
 
 <MainLayout title={title}>
 	<Escalation />
-	<OptionPlain restriction={sa1} />
-	<OptionPlain restriction={sa2} />
+	<OptionList />
 </MainLayout>

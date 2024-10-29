@@ -6,26 +6,12 @@ const { restriction } = Astro.props;
 	<p>{restriction.description}</p>
 </option-plain>
 
-<!-- <script define:vars={{ restriction }}>
-	const div = document.querySelector(`#${restriction.code}`);
-	div.addEventListener("click", () => {
-		div.classList.toggle("checked");
-
-		if (div.classList.contains("checked")) {
-			restriction.addToRestrictions();
-		} else {
-			restriction.removeFromRestrictions();
-		}
-	});
-</script> -->
-
 <script>
 	class OptionPlain extends HTMLElement {
 		connectedCallback() {
 			this.addEventListener("click", () => {
 				this.classList.toggle("checked");
 			});
-			console.log(this);
 		}
 	}
 
