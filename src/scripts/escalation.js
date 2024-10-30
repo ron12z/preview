@@ -7,14 +7,18 @@ function updateResult() {
 	const allRestrictions = getRestrictions();
 	const allChecked = document.querySelectorAll("option-plain.checked");
 
-	function addRestriction(restriction) {
+	function addToEscalation(restriction) {
 		if (!(restriction.code in escalations)) {
-			escalations.code = restriction.escalation;
+			escalations[restriction.code] = restriction;
 		}
 	}
 
 	function getEscalation() {
 		let result = [];
+
+		for (const key in escalations) {
+			result.push(escalations[key].escalation);
+		}
 
 		if (result.length > 1) {
 			result = result.slice(0, -1).join(", ") + ", and " + result.slice(-1);
@@ -30,8 +34,10 @@ function updateResult() {
 	allChecked.forEach((option) => {
 		const id = option.getAttribute("id");
 		const restriction = allRestrictions[id];
-		addRestriction(restriction);
+		addToEscalation(restriction);
 	});
+
+	console.log(escalations);
 
 	const escalationResult = document.querySelector("#escalation-result");
 	escalationResult.textContent = getEscalation();
