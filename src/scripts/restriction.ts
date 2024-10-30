@@ -51,6 +51,15 @@ export default Restriction;
 
 // Creating restrictions
 new Restriction({
+	code: "threshold",
+	description: "Threshold",
+	escalation: "Threshold escal",
+	options: null,
+	numOfInputs: null,
+	addMoreButton: false,
+});
+
+new Restriction({
 	code: "sa1",
 	description: "Suspicious Activity 1",
 	escalation: "Suspicious Activity 1 escal",
@@ -69,9 +78,72 @@ new Restriction({
 });
 
 new Restriction({
-	code: "threshold",
-	description: "Threshold",
-	escalation: "Threshold escal",
+	code: "sa3",
+	description: "Suspicious Activity 3",
+	escalation: "Suspicious Activity 3 escal",
+	options: null,
+	numOfInputs: null,
+	addMoreButton: false,
+});
+
+new Restriction({
+	code: "sa3",
+	description: "Suspicious Activity 3",
+	escalation: "Suspicious Activity 3 escal",
+	options: null,
+	numOfInputs: null,
+	addMoreButton: false,
+});
+
+new Restriction({
+	code: "sa3",
+	description: "Suspicious Activity 3",
+	escalation: "Suspicious Activity 3 escal",
+	options: null,
+	numOfInputs: null,
+	addMoreButton: false,
+});
+
+new Restriction({
+	code: "sa3",
+	description: "Suspicious Activity 3",
+	escalation: "Suspicious Activity 3 escal",
+	options: null,
+	numOfInputs: null,
+	addMoreButton: false,
+});
+
+new Restriction({
+	code: "sa3",
+	description: "Suspicious Activity 3",
+	escalation: "Suspicious Activity 3 escal",
+	options: null,
+	numOfInputs: null,
+	addMoreButton: false,
+});
+
+new Restriction({
+	code: "sa3",
+	description: "Suspicious Activity 3",
+	escalation: "Suspicious Activity 3 escal",
+	options: null,
+	numOfInputs: null,
+	addMoreButton: false,
+});
+
+new Restriction({
+	code: "sa3",
+	description: "Suspicious Activity 3",
+	escalation: "Suspicious Activity 3 escal",
+	options: null,
+	numOfInputs: null,
+	addMoreButton: false,
+});
+
+new Restriction({
+	code: "sa3",
+	description: "Suspicious Activity 3",
+	escalation: "Suspicious Activity 3 escal",
 	options: null,
 	numOfInputs: null,
 	addMoreButton: false,
