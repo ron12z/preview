@@ -1,5 +1,8 @@
 ---
-const { restriction } = Astro.props;
+import { Restrictions } from "../../scripts/restriction";
+const { restrictionKey } = Astro.props;
+
+const restriction = Restrictions[restrictionKey];
 ---
 
 <option-plain id={restriction.code} class="selection">
@@ -7,11 +10,6 @@ const { restriction } = Astro.props;
 </option-plain>
 
 <script>
-	import Escalation from "../../scripts/escalation";
-	document.querySelector("html")!.addEventListener("click", () => {
-		Escalation.updateResult();
-	});
-
 	class OptionPlain extends HTMLElement {
 		connectedCallback() {
 			this.addEventListener("click", () => {

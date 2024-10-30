@@ -10,3 +10,11 @@ const title = "Home Page";
 	<Escalation />
 	<OptionList />
 </MainLayout>
+
+<script>
+	// Any click on the page will update the result
+	import Escalation from "../scripts/escalation";
+	document.querySelector("html")!.addEventListener("click", () => {
+		Escalation.updateResult();
+	});
+</script>
