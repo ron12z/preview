@@ -1,0 +1,60 @@
+---
+import Choices from "./extraInput/Choices.astro";
+
+const { restriction } = Astro.props;
+
+const code = restriction.code;
+const description = restriction.description;
+const escalation = restriction.escalation;
+const optionDesc = restriction.optionDesc;
+const options = restriction.options;
+const numOfInputs = restriction.numOfInputs;
+const addMoreButton = restriction.addMoreButton;
+
+console.log(options);
+---
+
+<option-plain
+	id={code}
+	class="selection"
+	data-code={code}
+	data-description={description}
+	data-escalation={escalation}
+	data-optionDesc={optionDesc}
+	data-numOfInputs={numOfInputs}
+	data-addMoreButton={addMoreButton}
+>
+	<p>{description}</p>
+</option-plain>
+
+{options && <Choices restriction={restriction} />}
+<script>
+	class OptionPlain extends HTMLElement {
+		connectedCallback() {
+			this.addEventListener("click", () => {
+				this.classList.toggle("checked");
+			});
+
+			const code = this.getAttribute("data-code");
+			const description = this.getAttribute("data-description");
+			const escalation = this.getAttribute("data-escalation");
+			const optionDesc = this.getAttribute("data-optionDesc");
+			const numOfInputs = this.getAttribute("data-numOfInputs");
+			const addMoreButton = this.getAttribute("data-addMoreButton");
+		}
+	}
+
+	customElements.define("option-plain", OptionPlain);
+</script>
+
+<style>
+	option-plain {
+		display: block;
+		padding: 2rem;
+		background: lightblue;
+	}
+
+	.checked {
+		background: #21cf30;
+	}
+</style>

@@ -1,10 +1,14 @@
-interface Options {
+export interface Choices {
+	[key: string]: Array<string>;
+}
+
+export interface Options {
 	code?: string;
 	description?: string;
 	escalation?: string;
-	optionDesc?: string | null;
-	options?: Object | null;
-	numOfInputs?: number | null;
+	optionDesc?: string | false;
+	options?: Choices | null;
+	numOfInputs?: number;
 	addMoreButton?: boolean;
 }
 
@@ -12,18 +16,18 @@ export default class Restriction {
 	code: string;
 	description: string;
 	escalation: string;
-	optionDesc?: string | null;
-	options: Object | null;
-	numOfInputs: number | null;
+	optionDesc?: string | false;
+	options: Choices | null;
+	numOfInputs: number | false;
 	addMoreButton: boolean;
 
 	constructor({
 		code = "sa1",
 		description = "Sample Restriction",
 		escalation = "Suspicious Activity 1",
-		optionDesc = null,
+		optionDesc = false,
 		options = null,
-		numOfInputs = null,
+		numOfInputs = 0,
 		addMoreButton = false,
 	}: Options = {}) {
 		this.code = code;
@@ -61,7 +65,7 @@ new Restriction({
 		option1: ["VIP", "wd greater than 25k"],
 		option2: ["Not VIP", "wd greater than 24.999.99"],
 	},
-	numOfInputs: null,
+	numOfInputs: 0,
 	addMoreButton: false,
 });
 
@@ -73,8 +77,9 @@ new Restriction({
 	options: {
 		option1: ["Closed", "account status is closed"],
 		option2: ["Suspended", "account is suspended"],
+		option3: ["Time Out", "account is in time out"],
 	},
-	numOfInputs: null,
+	numOfInputs: 0,
 	addMoreButton: false,
 });
 
@@ -83,7 +88,7 @@ new Restriction({
 	description: "Suspicious Activity 1",
 	escalation: "Suspicious Activity 1 escal",
 	options: null,
-	numOfInputs: null,
+	numOfInputs: 0,
 	addMoreButton: false,
 });
 
@@ -92,7 +97,7 @@ new Restriction({
 	description: "Suspicious Activity 2",
 	escalation: "Suspicious Activity 2 escal",
 	options: null,
-	numOfInputs: null,
+	numOfInputs: 0,
 	addMoreButton: false,
 });
 
@@ -101,6 +106,6 @@ new Restriction({
 	description: "Suspicious Activity 3",
 	escalation: "Suspicious Activity 3 escal",
 	options: null,
-	numOfInputs: null,
+	numOfInputs: 0,
 	addMoreButton: false,
 });

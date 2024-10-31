@@ -3,12 +3,34 @@
 ---
 
 <div class="escalation">
-	<p id="escalation-result">Escalations should go here</p>
+	<button id="resetBtn">Reset</button>
+	<div>
+		<p id="escalation-result">Escalations should go here</p>
+	</div>
 </div>
 
 <style>
-	div {
+	.escalation {
 		background: lightcoral;
 		padding: 2rem;
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	button {
+		padding: 1rem;
+		border: 1px solid black;
 	}
 </style>
+
+<script>
+	document.querySelector("#resetBtn")!.addEventListener("click", () => {
+		const allChecked = document.querySelectorAll(".checked");
+		const allSelected = document.querySelectorAll(".selected");
+		const allInputs = document.querySelectorAll("input");
+
+		allChecked.forEach((i) => i.classList.remove("checked"));
+		allSelected.forEach((i) => i.classList.remove("selected"));
+		allInputs.forEach((i) => (i.value = ""));
+	});
+</script>

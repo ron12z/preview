@@ -1,14 +1,19 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Escalation from "../components/Escalation.astro";
-import OptionList from "../components/Options/OptionList.astro";
+import Restriction from "../components/Restriction.astro";
+import { getRestrictions } from "../scripts/restriction";
 
+const allRestrictions = getRestrictions();
 const title = "Home Page";
 ---
 
 <MainLayout title={title}>
 	<Escalation />
-	<OptionList />
+	<Restriction restriction={allRestrictions.sa1} />
+	<Restriction restriction={allRestrictions.sa2} />
+	<Restriction restriction={allRestrictions.threshold} />
+	<Restriction restriction={allRestrictions.accountStatus} />
 </MainLayout>
 
 <script>
