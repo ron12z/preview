@@ -26,11 +26,9 @@
 <script>
 	document.querySelector("#resetBtn")!.addEventListener("click", () => {
 		const allChecked = document.querySelectorAll(".checked");
-		const allSelected = document.querySelectorAll(".selected");
 		const allInputs = document.querySelectorAll("input");
 
 		allChecked.forEach((i) => i.classList.remove("checked"));
-		allSelected.forEach((i) => i.classList.remove("selected"));
 		allInputs.forEach((i) => (i.value = ""));
 	});
 </script>

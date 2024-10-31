@@ -109,3 +109,26 @@ new Restriction({
 	numOfInputs: 0,
 	addMoreButton: false,
 });
+
+new Restriction({
+	code: "emailMismatch",
+	description: "Email mismatch",
+	escalation: "account less than 1 month old with email name mismatch",
+	optionDesc: "Account Status",
+	options: null,
+	numOfInputs: 0,
+	addMoreButton: false,
+});
+
+new Restriction({
+	code: "njClient",
+	description: "NJ Client is withdrawing on a Licensed state such as PA/WV",
+	escalation: "NJ Client is withdrawing on a Licensed state",
+	optionDesc: "Client Withdrawal State",
+	options: {
+		option1: ["PA", "NJ Client withdrawing in PA - No License"],
+		option2: ["WV", "NJ Client withdrawing in WV - No License"],
+	},
+	numOfInputs: 0,
+	addMoreButton: false,
+});
