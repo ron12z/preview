@@ -30,5 +30,20 @@
 		"options": null,
 		"inputs": null,
 		"addMoreButton": false
+	},
+
+	"njClient": {
+		"name": "nj-client",
+		"description": "NJ Client is withdrawing on a Licensed state such as PA/WV",
+		"escalation": "NJ Client withdrawing in [slot] - No License",
+		"options": {
+			"PA": "PA",
+			"WV": "WV",
+			"NJ": "NJ",
+			"PH": "PH"
+		},
+		"optionsPreset": "NJ Client withdrawing in [slot] - No License",
+		"inputs": null,
+		"addMoreButton": false
 	}
 }
