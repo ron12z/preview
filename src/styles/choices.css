@@ -10,7 +10,7 @@
 	border-bottom: none;
 	background: rgb(132, 167, 132);
 	display: flex;
-	display: none;
+	/* display: none; */
 	flex-direction: column;
 	align-items: start;
 	flex-grow: 1;

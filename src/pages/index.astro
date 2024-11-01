@@ -5,6 +5,7 @@ import Restriction from "../components/Restriction.astro";
 import { getRestrictions } from "../scripts/restriction";
 
 import restrictions from "../data/restriction.json";
+import Inputs from "../components/extraInput/Inputs.astro";
 
 const title = "Home Page";
 ---
@@ -15,6 +16,7 @@ const title = "Home Page";
 	<Restriction restriction={restrictions.email} />
 	<Restriction restriction={restrictions.threshold} />
 	<Restriction restriction={restrictions.njClient} />
+	<Restriction restriction={restrictions.nameMismatch} />
 </MainLayout>
 
 <script>

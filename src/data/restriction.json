@@ -11,7 +11,8 @@
 		},
 		"optionsPreset": "total withdrawal amount is greater than [slot]",
 		"inputs": null,
-		"addMoreButton": false
+		"addMoreButton": false,
+		"extraInputDescription": "VIP Status"
 	},
 
 	"sa1": {
@@ -19,8 +20,9 @@
 		"description": "Suspicious Activity 1",
 		"escalation": "withdrawing to a payment method used for a smaller deposit something",
 		"options": null,
-		"inputs": 2,
-		"addMoreButton": false
+		"inputs": null,
+		"addMoreButton": false,
+		"extraInputDescription": "Cards"
 	},
 
 	"email": {
@@ -36,6 +38,7 @@
 		"name": "nj-client",
 		"description": "NJ Client is withdrawing on a Licensed state such as PA/WV",
 		"escalation": "NJ Client withdrawing in [slot] - No License",
+		"extraInputDescription": "Withdrawal State",
 		"options": {
 			"PA": "PA",
 			"WV": "WV",
@@ -45,5 +48,14 @@
 		"optionsPreset": "NJ Client withdrawing in [slot] - No License",
 		"inputs": null,
 		"addMoreButton": false
+	},
+
+	"nameMismatch": {
+		"name": "name-mismatch",
+		"description": "Name mismatch",
+		"escalation": "[#] different names on account: [put different names here]",
+		"options": null,
+		"inputs": 2,
+		"addMoreButton": true
 	}
 }

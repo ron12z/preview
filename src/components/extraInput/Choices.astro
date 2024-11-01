@@ -1,8 +1,14 @@
 ---
-import { pathHasLocale } from "astro:i18n";
 import "../../styles/choices.css";
-const { name, description, escalation, options, optionsPreset } =
-	Astro.props.restriction;
+
+const {
+	name,
+	description,
+	escalation,
+	options,
+	optionsPreset,
+	extraInputDescription,
+} = Astro.props.restriction;
 
 function counter() {
 	var currentValue = 0;
@@ -19,7 +25,7 @@ const choices = Object.entries(options);
 ---
 
 <div id={`${name}-options`} class="additional-input" data-linkage={name}>
-	<h4>Account Status:</h4>
+	<h4>{extraInputDescription}:</h4>
 	<div class="input-fields options">
 		{
 			choices.map((choice) => (

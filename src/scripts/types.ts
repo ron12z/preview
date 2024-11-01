@@ -9,5 +9,6 @@ export interface Restriction {
 	options: Option | null;
 	inputs: number | null;
 	addMoreButton: boolean;
-	optionPreset?: string;
+	optionsPreset?: string;
+	extraInputDescription?: string;
 }

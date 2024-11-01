@@ -1,6 +1,7 @@
 ---
 import { type Restriction } from "../scripts/types";
 import Choices from "./extraInput/Choices.astro";
+import Inputs from "./extraInput/Inputs.astro";
 const { restriction } = Astro.props;
 
 interface Props {
@@ -12,6 +13,7 @@ const description = restriction.description;
 const escalation = restriction.escalation;
 const options = restriction.options;
 const addMoreButton = restriction.addMoreButton;
+const inputs = restriction.inputs;
 ---
 
 <div id={name} class="selection" data-escalation={escalation}>
@@ -20,6 +22,7 @@ const addMoreButton = restriction.addMoreButton;
 
 {options && <Choices restriction={restriction} />}
 
+{inputs && <Inputs restriction={restriction} />}
 <script>
 	const allSelectionDivs = document.querySelectorAll(".selection");
 
