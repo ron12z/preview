@@ -24,11 +24,17 @@
 </style>
 
 <script>
+	import { imageConfig } from "astro:assets";
+
 	document.querySelector("#resetBtn")!.addEventListener("click", () => {
 		const allChecked = document.querySelectorAll(".checked");
 		const allInputs = document.querySelectorAll("input");
+		const allActive = document.querySelectorAll("[data-active-escalation]");
+		const allOptions = document.querySelectorAll(".option");
 
 		allChecked.forEach((i) => i.classList.remove("checked"));
 		allInputs.forEach((i) => (i.value = ""));
+		allActive.forEach((i) => i.removeAttribute("data-active-escalation"));
+		allOptions.forEach((i) => i.classList.remove("selected"));
 	});
 </script>

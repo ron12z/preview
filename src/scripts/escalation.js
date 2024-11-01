@@ -1,46 +1,39 @@
-import { getRestrictions } from "./restriction";
-
 function updateResult() {
-	// Update escalation result
-	const escalations = {};
+	// initialize result array
+	let result = [];
 
-	const allRestrictions = getRestrictions();
-	const allChecked = document.querySelectorAll("option-plain.checked");
+	// Select all divs with data-active-escalation attribute
+	const allEscalations = document.querySelectorAll("[data-active-escalation]");
 
-	function addToEscalation(code, escalation) {
-		if (!(code in escalations)) {
-			escalations[code] = escalation;
+	// Add value of those divs to result array
+	allEscalations.forEach((escalation) => {
+		const activeEscalation = escalation.getAttribute("data-active-escalation");
+		if (activeEscalation) {
+			result.push(activeEscalation);
 		}
-	}
-
-	function getEscalation() {
-		let result = [];
-
-		for (const key in escalations) {
-			result.push(escalations[key]);
-		}
-
-		if (result.length > 1) {
-			result = result.slice(0, -1).join(", ") + ", and " + result.slice(-1);
-		} else if (result.length === 1) {
-			result = result[0];
-		} else if (result.length === 0) {
-			result = "No restriction selected";
-		}
-
-		return result;
-	}
-
-	allChecked.forEach((option) => {
-		const id = option.getAttribute("id");
-		const escalation = option.getAttribute("data-escalation");
-		addToEscalation(id, escalation);
 	});
 
-	console.log(escalations);
+	// This block is just for formatting the final result to display (adding comma and "and" when needed )
+	if (result.length > 1) {
+		result = result.slice(0, -1).join(", ") + ", and " + result.slice(-1);
+	} else if (result.length === 1) {
+		result = result[0];
+	} else if (result.length === 0) {
+		result = "No restriction selected";
+	}
 
-	const escalationResult = document.querySelector("#escalation-result");
-	escalationResult.textContent = getEscalation();
+	// display result
+	const resultDiv = document.querySelector("#escalation-result");
+
+	// Default when no restriction is selected, show default
+	if (allEscalations.length === 0) {
+		resultDiv.textContent = "No restriction selected";
+	}
+
+	// When there is at least one restriction selected, format it.
+	else if (allEscalations.length >= 1) {
+		resultDiv.textContent = "Escalating Case - " + result + ".";
+	}
 }
 
 export default {

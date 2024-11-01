@@ -1,52 +1,47 @@
 ---
+import { type Restriction } from "../scripts/types";
 import Choices from "./extraInput/Choices.astro";
-
 const { restriction } = Astro.props;
 
-const code = restriction.code;
+interface Props {
+	restriction: Restriction;
+}
+
+const name = restriction.name;
 const description = restriction.description;
 const escalation = restriction.escalation;
-const optionDesc = restriction.optionDesc;
 const options = restriction.options;
-const numOfInputs = restriction.numOfInputs;
 const addMoreButton = restriction.addMoreButton;
 ---
 
-<option-plain
-	id={code}
-	class="selection"
-	data-code={code}
-	data-description={description}
-	data-escalation={escalation}
-	data-optionDesc={optionDesc}
-	data-numOfInputs={numOfInputs}
-	data-addMoreButton={addMoreButton}
->
+<div id={name} class="selection" data-escalation={escalation}>
 	<p>{description}</p>
-</option-plain>
+</div>
 
 {options && <Choices restriction={restriction} />}
+
 <script>
-	class OptionPlain extends HTMLElement {
-		connectedCallback() {
-			this.addEventListener("click", () => {
-				this.classList.toggle("checked");
-			});
+	const allSelectionDivs = document.querySelectorAll(".selection");
 
-			const code = this.getAttribute("data-code");
-			const description = this.getAttribute("data-description");
-			const escalation = this.getAttribute("data-escalation");
-			const optionDesc = this.getAttribute("data-optionDesc");
-			const numOfInputs = this.getAttribute("data-numOfInputs");
-			const addMoreButton = this.getAttribute("data-addMoreButton");
-		}
-	}
+	allSelectionDivs.forEach((selection) => {
+		// Toggle "check" class by clicking
+		selection.addEventListener("click", () => {
+			selection.classList.toggle("checked");
 
-	customElements.define("option-plain", OptionPlain);
+			// add data-active-escalation when checked and remove it if not
+			const escalation = selection.getAttribute("data-escalation")!;
+
+			if (selection.classList.contains("checked")) {
+				selection.setAttribute("data-active-escalation", escalation);
+			} else {
+				selection.removeAttribute("data-active-escalation");
+			}
+		});
+	});
 </script>
 
 <style>
-	option-plain {
+	div {
 		display: block;
 		padding: 2rem;
 		background: lightblue;

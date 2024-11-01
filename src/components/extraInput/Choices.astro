@@ -1,77 +1,77 @@
 ---
+import { pathHasLocale } from "astro:i18n";
 import "../../styles/choices.css";
-const { restriction } = Astro.props;
-const divID = `${restriction.code}-extra`;
+const { name, description, escalation, options, optionsPreset } =
+	Astro.props.restriction;
 
-const optionKeys = Object.keys(restriction.options);
-const options = restriction.options;
-const code = restriction.code;
-const optionDesc = restriction.optionDesc;
+function counter() {
+	var currentValue = 0;
+
+	return function () {
+		currentValue++;
+		return currentValue;
+	};
+}
+
+const optionCount = counter();
+
+const choices = Object.entries(options);
 ---
 
-<choices-div id={`${divID}`} class="additional-input" data-code={code}>
-	<h4>{optionDesc}:</h4>
+<div id={`${name}-options`} class="additional-input" data-linkage={name}>
+	<h4>Account Status:</h4>
 	<div class="input-fields options">
 		{
-			optionKeys.map((optionKey: string) => (
-				<option-div
-					id={`${code}-${optionKey}`}
-					class="option"
-					data-code={code}
-					data-escalation={options[optionKey][1]}
+			choices.map((choice) => (
+				<div
+					id={`${name}-option${optionCount()}`}
+					class={`${name}-option option`}
+					data-value={choice[1]}
+					data-linkage={name}
+					data-preset={optionsPreset}
 				>
-					<p>{options[optionKey][0]}</p>
-				</option-div>
+					<p>{choice[0]}</p>
+				</div>
 			))
 		}
 	</div>
-</choices-div>
-<script>
-	class ChoicesDiv extends HTMLElement {
-		connectedCallback() {
-			document.addEventListener("click", () => {
-				if (linkage!.classList.contains("checked")) {
-					this.style.display = "flex";
-				} else {
-					this.style.display = "none";
-				}
-			});
-
-			const code = this.getAttribute("data-code");
-
-			const linkage = document.querySelector(`#${code}`);
-		}
-	}
-
-	customElements.define("choices-div", ChoicesDiv);
-</script>
+</div>
 
 <script>
-	class OptionDiv extends HTMLElement {
-		connectedCallback() {
-			function handleOptionClick(event: { currentTarget: any }) {
-				const clicked = event.currentTarget;
+	// Giving ability to change the data-active-escalation to all specific choices
+	const optionChoices = document.querySelectorAll(".option"); // All specific choices
 
-				// Only put selected on clicked node
-				options.forEach((option) => {
-					option.classList.remove("selected");
-				});
+	// All instances of this component
+	const allInstances = document.querySelectorAll(".additional-input");
+	allInstances.forEach((instance: any) => {
+		// get connected restriction
+		const linkage = instance.getAttribute("data-linkage");
+		const main = document.querySelector(`#${linkage}`)!; //connected restriction
 
-				clicked.classList.add("selected");
-				linkage!.setAttribute("data-escalation", escalation);
+		// show or hide depending on the connected restriction's "checked" class
+		document.addEventListener("click", () => {
+			if (main.classList.contains("checked")) {
+				instance.style.display = "flex";
+			} else {
+				instance.style.display = "none";
 			}
+		});
+	});
 
-			this.addEventListener("click", handleOptionClick);
+	optionChoices.forEach((option) => {
+		option.addEventListener("click", () => {
+			// Changing the data-active-escalation value of the connected restriction selection
+			const linkage = option.getAttribute("data-linkage");
+			const main = document.querySelector(`#${linkage}`); //connected restriction
+			const preset = option.getAttribute("data-preset")!;
+			const optionValue = option.getAttribute("data-value")!;
+			const finalValue = preset.replace("[slot]", optionValue);
+			main!.setAttribute("data-active-escalation", finalValue);
 
-			const code = this.getAttribute("data-code");
-			const divID = `${code}-extra`;
-			const field = document.querySelector(`#${divID}`);
-			const options = field!.querySelectorAll(".option");
-
-			const escalation = this.getAttribute("data-escalation")!;
-			const linkage = document.querySelector(`#${code}`);
-		}
-	}
-
-	customElements.define("option-div", OptionDiv);
+			// Making current selection the only one with "checked" from it's group
+			const allOptions = option.parentElement!.querySelectorAll(".option");
+			allOptions.forEach((option) => option.classList.remove("selected"));
+			option.classList.add("selected");
+		});
+	});
 </script>

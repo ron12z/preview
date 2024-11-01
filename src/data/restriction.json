@@ -1,0 +1,34 @@
+{
+	"threshold": {
+		"name": "threshold",
+		"description": "WD is greater than the allowed threshold",
+		"escalation": "total withdrawal amount is greater than allowed threshold",
+		"options": {
+			"VIP": "$25,000",
+			"Not VIP": "$24999",
+			"Another Option": "$22222",
+			"Ordinary Person": "$1"
+		},
+		"optionsPreset": "total withdrawal amount is greater than [slot]",
+		"inputs": null,
+		"addMoreButton": false
+	},
+
+	"sa1": {
+		"name": "sa1",
+		"description": "Suspicious Activity 1",
+		"escalation": "withdrawing to a payment method used for a smaller deposit something",
+		"options": null,
+		"inputs": 2,
+		"addMoreButton": false
+	},
+
+	"email": {
+		"name": "email",
+		"description": "Email mismatch",
+		"escalation": "Account less than one month old with email mismatch",
+		"options": null,
+		"inputs": null,
+		"addMoreButton": false
+	}
+}

@@ -4,18 +4,16 @@ import Escalation from "../components/Escalation.astro";
 import Restriction from "../components/Restriction.astro";
 import { getRestrictions } from "../scripts/restriction";
 
-const allRestrictions = getRestrictions();
+import restrictions from "../data/restriction.json";
+
 const title = "Home Page";
 ---
 
 <MainLayout title={title}>
 	<Escalation />
-	<Restriction restriction={allRestrictions.sa1} />
-	<Restriction restriction={allRestrictions.sa2} />
-	<Restriction restriction={allRestrictions.threshold} />
-	<Restriction restriction={allRestrictions.accountStatus} />
-	<Restriction restriction={allRestrictions.emailMismatch} />
-	<Restriction restriction={allRestrictions.njClient} />
+	<Restriction restriction={restrictions.threshold} />
+	<Restriction restriction={restrictions.sa1} />
+	<Restriction restriction={restrictions.email} />
 </MainLayout>
 
 <script>
