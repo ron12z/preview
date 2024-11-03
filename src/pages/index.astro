@@ -1,22 +1,22 @@
 ---
+// Components import
 import MainLayout from "../layouts/MainLayout.astro";
 import Escalation from "../components/Escalation.astro";
 import Restriction from "../components/Restriction.astro";
-import { getRestrictions } from "../scripts/restriction";
 
-import restrictions from "../data/restriction.json";
-import Inputs from "../components/extraInput/Inputs.astro";
+// Data import
+import allRestrictions from "../data/restriction.json";
 
 const title = "Home Page";
 ---
 
 <MainLayout title={title}>
 	<Escalation />
-	<Restriction restriction={restrictions.sa1} />
-	<Restriction restriction={restrictions.email} />
-	<Restriction restriction={restrictions.threshold} />
-	<Restriction restriction={restrictions.njClient} />
-	<Restriction restriction={restrictions.nameMismatch} />
+	{
+		allRestrictions.map((restriction) => (
+			<Restriction restriction={restriction} />
+		))
+	}
 </MainLayout>
 
 <script>

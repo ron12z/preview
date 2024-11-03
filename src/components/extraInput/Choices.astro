@@ -1,83 +1,20 @@
 ---
-import "../../styles/choices.css";
-
-const {
-	name,
-	description,
-	escalation,
-	options,
-	optionsPreset,
-	extraInputDescription,
-} = Astro.props.restriction;
-
-function counter() {
-	var currentValue = 0;
-
-	return function () {
-		currentValue++;
-		return currentValue;
-	};
-}
-
-const optionCount = counter();
+const { id, escalation, additionalDesc, options } = Astro.props.restriction;
 
 const choices = Object.entries(options);
 ---
 
-<div id={`${name}-options`} class="additional-input" data-linkage={name}>
-	<h4>{extraInputDescription}:</h4>
-	<div class="input-fields options">
+<div id={`${id}-extra`} class="additional-input">
+	<h4>{additionalDesc}</h4>
+	<div class="options">
 		{
-			choices.map((choice) => (
-				<div
-					id={`${name}-option${optionCount()}`}
-					class={`${name}-option option`}
-					data-value={choice[1]}
-					data-linkage={name}
-					data-preset={optionsPreset}
-				>
-					<p>{choice[0]}</p>
+			choices.map(([label, value]) => (
+				<div id="isVIP" class="option" data-value={value}>
+					<p>{label}</p>
 				</div>
 			))
 		}
 	</div>
 </div>
 
-<script>
-	// Giving ability to change the data-active-escalation to all specific choices
-	const optionChoices = document.querySelectorAll(".option"); // All specific choices
-
-	// All instances of this component
-	const allInstances = document.querySelectorAll(".additional-input");
-	allInstances.forEach((instance: any) => {
-		// get connected restriction
-		const linkage = instance.getAttribute("data-linkage");
-		const main = document.querySelector(`#${linkage}`)!; //connected restriction
-
-		// show or hide depending on the connected restriction's "checked" class
-		document.addEventListener("click", () => {
-			if (main.classList.contains("checked")) {
-				instance.style.display = "flex";
-			} else {
-				instance.style.display = "none";
-			}
-		});
-	});
-
-	optionChoices.forEach((option) => {
-		option.addEventListener("click", () => {
-			// Changing the data-active-escalation value of the connected restriction selection
-			const linkage = option.getAttribute("data-linkage");
-			const main = document.querySelector(`#${linkage}`); //connected restriction
-			const preset = option.getAttribute("data-preset")!;
-			const optionValue = option.getAttribute("data-value")!;
-			const finalValue = preset.replace("[slot]", optionValue);
-			main!.setAttribute("data-active-escalation", finalValue);
-
-			// Making current selection the only one with "checked" from it's group
-			const allOptions = option.parentElement!.querySelectorAll(".option");
-			allOptions.forEach((option) => option.classList.remove("selected"));
-			option.classList.add("selected");
-		});
-	});
-</script>
+<style></style>

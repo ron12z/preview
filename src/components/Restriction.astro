@@ -1,50 +1,64 @@
 ---
-import { type Restriction } from "../scripts/types";
 import Choices from "./extraInput/Choices.astro";
-import Inputs from "./extraInput/Inputs.astro";
-const { restriction } = Astro.props;
 
-interface Props {
-	restriction: Restriction;
+export interface Restriction {
+	id: string;
+	display: string;
+	description: string;
+	escalation: string;
+	additionalDesc?: string;
+	options?: [{ [key: string]: string }];
+	slot1?: { [key: string]: string };
+	slot2?: { [key: string]: string };
+	slot3?: { [key: string]: string };
+	slot4?: { [key: string]: string };
 }
 
-const name = restriction.name;
+//
+const { restriction } = Astro.props;
+const id = restriction.id;
+const display = restriction.display;
 const description = restriction.description;
 const escalation = restriction.escalation;
+const additionalDesc = restriction.additionalDesc;
 const options = restriction.options;
-const addMoreButton = restriction.addMoreButton;
-const inputs = restriction.inputs;
+const slot1 = restriction.slot1;
+const slot2 = restriction.slot2;
+const slot3 = restriction.slot3;
+const slot4 = restriction.slot4;
+
+const additionalInputID = `${id}-extra`;
 ---
 
-<div id={name} class="selection" data-escalation={escalation}>
-	<p>{description}</p>
+<div
+	id={id}
+	class="selection"
+	data-extra-id={additionalInputID}
+	data-escalation={escalation}
+>
+	<p>{display}</p>
 </div>
 
 {options && <Choices restriction={restriction} />}
 
-{inputs && <Inputs restriction={restriction} />}
 <script>
-	const allSelectionDivs = document.querySelectorAll(".selection");
+	const allSelections = document.querySelectorAll(".selection");
 
-	allSelectionDivs.forEach((selection) => {
-		// Toggle "check" class by clicking
+	allSelections.forEach((selection) => {
+		// Add toggle functionality
 		selection.addEventListener("click", () => {
 			selection.classList.toggle("checked");
 
-			// add data-active-escalation when checked and remove it if not
-			const escalation = selection.getAttribute("data-escalation")!;
+			const linkedExtraID = selection.getAttribute("data-extra-id");
+			const linkedExtra = document.querySelector(`#${linkedExtraID}`);
 
-			if (selection.classList.contains("checked")) {
-				selection.setAttribute("data-active-escalation", escalation);
-			} else {
-				selection.removeAttribute("data-active-escalation");
-			}
+			// get details from linked Extra
 		});
 	});
 </script>
 
 <style>
-	div {
+	.selection {
 		display: block;
 		padding: 2rem;
 		background: lightblue;

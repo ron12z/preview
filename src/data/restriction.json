@@ -1,61 +1,90 @@
-{
-	"threshold": {
-		"name": "threshold",
-		"description": "WD is greater than the allowed threshold",
-		"escalation": "total withdrawal amount is greater than allowed threshold",
+[
+	{
+		"id": "threshold",
+		"display": "WD amount more than threshold",
+		"description": "WD amount more than threshold",
+		"escalation": "WD greater than [option]",
+		"additionalDesc": "Account Status",
 		"options": {
-			"VIP": "$25,000",
-			"Not VIP": "$24999",
-			"Another Option": "$22222",
-			"Ordinary Person": "$1"
-		},
-		"optionsPreset": "total withdrawal amount is greater than [slot]",
-		"inputs": null,
-		"addMoreButton": false,
-		"extraInputDescription": "VIP Status"
+			"VIP": "$25k",
+			"Not VIP": "$24,999.99"
+		}
 	},
 
-	"sa1": {
-		"name": "sa1",
-		"description": "Suspicious Activity 1",
-		"escalation": "withdrawing to a payment method used for a smaller deposit something",
-		"options": null,
-		"inputs": null,
-		"addMoreButton": false,
-		"extraInputDescription": "Cards"
-	},
-
-	"email": {
-		"name": "email",
-		"description": "Email mismatch",
-		"escalation": "Account less than one month old with email mismatch",
-		"options": null,
-		"inputs": null,
-		"addMoreButton": false
-	},
-
-	"njClient": {
-		"name": "nj-client",
-		"description": "NJ Client is withdrawing on a Licensed state such as PA/WV",
-		"escalation": "NJ Client withdrawing in [slot] - No License",
-		"extraInputDescription": "Withdrawal State",
+	{
+		"id": "accountStatus",
+		"display": "Account is suspended/closed",
+		"description": "Account is suspended/closed",
+		"escalation": "account is [option]",
+		"additionalDesc": "Account Status",
 		"options": {
-			"PA": "PA",
-			"WV": "WV",
-			"NJ": "NJ",
-			"PH": "PH"
-		},
-		"optionsPreset": "NJ Client withdrawing in [slot] - No License",
-		"inputs": null,
-		"addMoreButton": false
+			"Suspended": "suspended",
+			"Closed": "closed"
+		}
 	},
 
-	"nameMismatch": {
-		"name": "name-mismatch",
+	{
+		"id": "name",
+		"display": "Name mismatch",
 		"description": "Name mismatch",
-		"escalation": "[#] different names on account: [put different names here]",
-		"options": null,
-		"inputs": 2,
-		"addMoreButton": true
+		"escalation": "[namesCount] different names in account: [slot1]",
+		"additionalDesc": "Names In Account",
+		"slot1": {
+			"Name": 2,
+			"addMoreButton": true
+		}
+	},
+
+	{
+		"id": "email",
+		"display": "Email mismatch",
+		"description": "Email mismatch",
+		"escalation": "account less than 1 month old with email name mismatch"
+	},
+
+	{
+		"id": "lost",
+		"display": "Has lost/stolen failed deposit in the past 7 days",
+		"description": "Has lost/stolen failed deposit in the past 7 days",
+		"escalation": "([slot1]) has been reported lost or stolen",
+		"additionalDesc": "Failed Deposit/s Details",
+		"slot1": {
+			"Account Number": 1,
+			"addMoreButton": true
+		}
+	},
+
+	{
+		"id": "sa1",
+		"display": "Suspicious Activity 1",
+		"description": "Suspicious Activity 1",
+		"escalation": "withdrawing to a payment method ([slot1]) used for a small deposit with larger deposits made with ([slot2])",
+		"additionalDesc": "Card Details",
+		"slot1": {
+			"Withdrawal payment method": 1
+		},
+		"slot2": {
+			"Payment method with larger deposit": 1,
+			"addMoreButton": true
+		}
+	},
+
+	{
+		"id": "sa2",
+		"display": "Suspicious Activity 2",
+		"description": "Suspicious Activity 2",
+		"escalation": "customer has attempted to deposit with multiple debit cards in the past 24 hours - [slot1]",
+		"additionalDesc": "Debit Cards Used",
+		"slot1": {
+			"Card Number": 3,
+			"addMoreButton": true
+		}
+	},
+
+	{
+		"id": "cashout",
+		"display": "Cashed out",
+		"description": "Cashed out",
+		"escalation": "cashed out bet before the latest withdrawal"
 	}
-}
+]
