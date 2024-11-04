@@ -19,7 +19,8 @@
 		"additionalDesc": "Account Status",
 		"options": {
 			"Suspended": "suspended",
-			"Closed": "closed"
+			"Closed": "closed",
+			"Timeout": "on timeout"
 		}
 	},
 

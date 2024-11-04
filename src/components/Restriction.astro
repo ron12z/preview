@@ -52,7 +52,15 @@ const additionalInputID = `${id}-extra`;
 			const linkedExtraID = selection.getAttribute("data-extra-id");
 			const linkedExtra = document.querySelector(`#${linkedExtraID}`);
 
-			// get details from linked Extra
+			document.querySelector("html")!.addEventListener("click", () => {
+				if (linkedExtra) {
+					if (selection.classList.contains("checked")) {
+						(linkedExtra as HTMLElement).style.display = "flex";
+					} else {
+						(linkedExtra as HTMLElement).style.display = "none";
+					}
+				}
+			});
 		});
 	});
 </script>
