@@ -47,10 +47,15 @@ const additionalInputID = `${id}-extra`;
 	allSelections.forEach((selection) => {
 		// Add toggle functionality
 		selection.addEventListener("click", () => {
-			selection.classList.toggle("checked");
-
 			const linkedExtraID = selection.getAttribute("data-extra-id");
 			const linkedExtra = document.querySelector(`#${linkedExtraID}`);
+			const escalation = selection.getAttribute("data-escalation")!;
+
+			selection.classList.toggle("checked");
+
+			if (selection.classList.contains("checked")) {
+				selection.setAttribute("data-active-escalation", escalation);
+			}
 
 			document.querySelector("html")!.addEventListener("click", () => {
 				if (linkedExtra) {
