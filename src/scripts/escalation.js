@@ -98,7 +98,7 @@ export function updateResult() {
 	// Update escalation display
 	const resultP = document.querySelector("#escalation-result");
 	if (result) {
-		resultP.textContent = `Escalating case ${capitalizeFirstLetter(result)}.`;
+		resultP.textContent = `Escalating case - ${capitalizeFirstLetter(result)}.`;
 	} else {
 		resultP.textContent = "No restrictions selected.";
 	}
