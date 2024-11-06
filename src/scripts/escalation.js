@@ -1,41 +1,114 @@
-function updateResult() {
-	// initialize result array
+let ActiveEscalations = {};
+
+function formatInputs(result) {
+	// Format values here then return it as string
+	// e.g. [1234, 2222, 3333] will return "1234, 2222 & 3333"
+	let final_result = "";
+
+	if (result.length == 1) {
+		return result[0];
+	}
+
+	for (let i = 0; i < result.length; i++) {
+		if (i === result.length - 1) {
+			final_result += `& ${result[i]}`;
+		} else if (i === result.length - 2) {
+			final_result += `${result[i]} `;
+		} else {
+			final_result += `${result[i]}, `;
+		}
+	}
+
+	return final_result;
+}
+
+// Use this in event's listener of selection, choices, and input fields
+export function addEscalation(id) {
+	const restriction = document.querySelector(`#${id}`);
+	const linkedExtra = document.querySelector(`#${id}-extra`);
+	const escalation = restriction.getAttribute("data-escalation");
+
+	if (linkedExtra) {
+		const selectedOption = linkedExtra
+			.querySelector(".selected")
+			.getAttribute("data-value")
+			.trim();
+		const slot1values = [];
+		const slot2values = [];
+		const slot3values = [];
+		const slot4values = [];
+
+		const slot1 = formatInputs(slot1values)
+			? formatInputs(slot1values).trim()
+			: "";
+		const slot2 = formatInputs(slot2values)
+			? formatInputs(slot2values).trim()
+			: "";
+		const slot3 = formatInputs(slot3values)
+			? formatInputs(slot3values).trim()
+			: "";
+		const slot4 = formatInputs(slot4values)
+			? formatInputs(slot4values).trim()
+			: "";
+
+		//Replace [option] and [slot#] from data-escalation
+		const optionFilled = escalation.replace("[option]", selectedOption);
+		const slot1Filled = optionFilled.replace("[slot1]", slot1);
+		const slot2Filled = slot1Filled.replace("[slot2]", slot2);
+		const slot3Filled = slot2Filled.replace("[slot3]", slot3);
+		const slot4Filled = slot3Filled.replace("[slot4]", slot4);
+
+		ActiveEscalations[id] = slot4Filled;
+	} else {
+		ActiveEscalations[id] = escalation;
+	}
+}
+
+export function removeEscalation(id) {
+	if (Object.keys(ActiveEscalations).includes(id)) {
+		delete ActiveEscalations[id];
+		console.log(`${id} removed`);
+	}
+}
+
+export function resetEscalation() {
+	ActiveEscalations = {};
+}
+
+function capitalizeFirstLetter(str) {
+	if (!str) return str; // Return as is if the string is empty or null
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function updateResult() {
 	let result = [];
 
-	// Select all divs with data-active-escalation attribute
-	const allEscalations = document.querySelectorAll("[data-active-escalation]");
-
-	// Add value of those divs to result array
-	allEscalations.forEach((escalation) => {
-		const activeEscalation = escalation.getAttribute("data-active-escalation");
-		if (activeEscalation) {
-			result.push(activeEscalation);
-		}
+	// Add escalation values to result array
+	Object.values(ActiveEscalations).forEach((escalation) => {
+		result.push(escalation);
 	});
 
-	// This block is just for formatting the final result to display (adding comma and "and" when needed )
+	// Join escalation items in result array and format them accordingly
 	if (result.length > 1) {
 		result = result.slice(0, -1).join(", ") + ", and " + result.slice(-1);
-	} else if (result.length === 1) {
-		result = result[0];
-	} else if (result.length === 0) {
-		result = "No restriction selected";
+	} else {
+		result = result.join("");
 	}
 
-	// display result
-	const resultDiv = document.querySelector("#escalation-result");
-
-	// Default when no restriction is selected, show default
-	if (allEscalations.length === 0) {
-		resultDiv.textContent = "No restriction selected";
+	// Update escalation display
+	const resultP = document.querySelector("#escalation-result");
+	if (result) {
+		resultP.textContent = `Escalating case ${capitalizeFirstLetter(result)}.`;
+	} else {
+		resultP.textContent = "No restrictions selected.";
 	}
 
-	// When there is at least one restriction selected, format it.
-	else if (allEscalations.length >= 1) {
-		resultDiv.textContent = "Escalating Case - " + result + ".";
-	}
+	console.log(ActiveEscalations);
 }
 
 export default {
 	updateResult,
+	removeEscalation,
+	addEscalation,
+	resetEscalation,
 };

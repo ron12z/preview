@@ -12,6 +12,8 @@ function firstCallTrue() {
 		return false;
 	};
 }
+
+const isFirstInstance = firstCallTrue();
 ---
 
 <div id={`${id}-extra`} class="additional-input">
@@ -19,7 +21,10 @@ function firstCallTrue() {
 	<div class="options" data-main={id}>
 		{
 			choices.map(([label, value]) => (
-				<div class="option" data-value={value}>
+				<div
+					class={`option ${isFirstInstance() ? "selected" : ""}`}
+					data-value={value}
+				>
 					<p>{label}</p>
 				</div>
 			))
@@ -28,6 +33,8 @@ function firstCallTrue() {
 </div>
 
 <script>
+	import Escalation from "../../scripts/escalation";
+
 	const allChoicesExtra = document.querySelectorAll(".options");
 	allChoicesExtra.forEach((choiceExtra) => {
 		const linkedMain = choiceExtra.getAttribute("data-main")!;
@@ -43,14 +50,7 @@ function firstCallTrue() {
 				});
 				// Add selected to self
 				choice.classList.add("selected");
-
-				const thisOptionValue = choice.getAttribute("data-value")!.trim();
-				const updatedEscalation = mainEscalation.replace(
-					"[option]",
-					thisOptionValue
-				);
-
-				main.setAttribute("data-active-escalation", updatedEscalation);
+				Escalation.addEscalation(linkedMain);
 			});
 		});
 	});
