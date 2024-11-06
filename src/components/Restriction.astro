@@ -1,5 +1,6 @@
 ---
 import Choices from "./extraInput/Choices.astro";
+import Inputs from "./extraInput/Inputs.astro";
 
 export interface Restriction {
 	id: string;
@@ -18,7 +19,6 @@ export interface Restriction {
 const { restriction } = Astro.props;
 const id = restriction.id;
 const display = restriction.display;
-const description = restriction.description;
 const escalation = restriction.escalation;
 const additionalDesc = restriction.additionalDesc;
 const options = restriction.options;
@@ -40,6 +40,8 @@ const additionalInputID = `${id}-extra`;
 </div>
 
 {options && <Choices restriction={restriction} />}
+
+{!options && additionalDesc && <Inputs restriction={restriction} />}
 
 <script>
 	import Escalation from "../scripts/escalation";
