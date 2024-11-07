@@ -88,5 +88,121 @@
 		"display": "Cashed out",
 		"description": "Cashed out",
 		"escalation": "cashed out bet before the latest withdrawal"
+	},
+
+	{
+		"id": "short-odds",
+		"display": "Short Odds",
+		"description": "Short Odds",
+		"escalation": "short odds bet placement"
+	},
+
+	{
+		"id": "outside-us",
+		"display": "Account is Geo locating outside of the US",
+		"description": "Account is Geo locating outside of the US",
+		"escalation": "account is Geo locating outside of the US"
+	},
+
+	{
+		"id": "new-location",
+		"display": "Account is on a new device in a new location",
+		"description": "Account is on a new device in a new location",
+		"escalation": "account is on a new device in a new location"
+	},
+
+	{
+		"id": "licensed-state",
+		"display": "Licensed State (PA, WV)",
+		"description": "Licensed State (PA, WV)",
+		"escalation": "([slot1]) Account, no license",
+		"additionalDesc": "State",
+		"slot1": {
+			"PA/WV/Others": 1
+		}
+	},
+
+	{
+		"id": "no-initial-deposit",
+		"display": "Account has no initial deposit and winnings NOT from free bet or PB Migrated funds",
+		"description": "Account has no initial deposit and winnings NOT from free bet or PB Migrated funds",
+		"escalation": "no intial deposit"
+	},
+
+	{
+		"id": "zip-code",
+		"display": "Has 2 or more ZIP Codes",
+		"description": "Has 2 or more ZIP Codes",
+		"escalation": "has 2 or more zip codes used within the past 24 hours"
+	},
+
+	{
+		"id": "baccarat-abuse",
+		"display": "Baccarat Abuse",
+		"description": "Baccarat Abuse - If in the 'Casino History' tab you see the total amount of bets to be equal or similar to the payout they are receiving and deposit and withdrawal are two different payment",
+		"escalation": "baccarat abuse"
+	},
+
+	{
+		"id": "",
+		"display": "",
+		"description": "",
+		"escalation": ""
+	},
+
+	{
+		"id": "",
+		"display": "",
+		"description": "",
+		"escalation": ""
+	},
+
+	{
+		"id": "",
+		"display": "",
+		"description": "",
+		"escalation": ""
+	},
+
+	{
+		"id": "",
+		"display": "",
+		"description": "",
+		"escalation": ""
+	},
+
+	{
+		"id": "",
+		"display": "",
+		"description": "",
+		"escalation": ""
+	},
+
+	{
+		"id": "",
+		"display": "",
+		"description": "",
+		"escalation": ""
+	},
+
+	{
+		"id": "",
+		"display": "",
+		"description": "",
+		"escalation": ""
+	},
+
+	{
+		"id": "",
+		"display": "",
+		"description": "",
+		"escalation": ""
+	},
+
+	{
+		"id": "",
+		"display": "",
+		"description": "",
+		"escalation": ""
 	}
 ]
