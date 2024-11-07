@@ -1,14 +1,45 @@
-const addMoreBtns = document.querySelectorAll(".addMoreBtn");
+import Escalation from "./escalation.js";
+
+const addMoreBtns = document.querySelectorAll(".addMore");
+
+function inputFieldEventHandler(event) {
+	const inputField = event.currentTarget;
+
+	const id = inputField.parentElement.parentElement.parentElement.parentElement
+		.getAttribute("id")
+		.replace("-extra", "");
+
+	Escalation.addEscalation(id);
+	Escalation.updateResult();
+}
+
+function addInputEventHandler(inputField) {
+	["keyup", "keydown", "blur"].forEach((eventType) => {
+		inputField.addEventListener(eventType, inputFieldEventHandler);
+	});
+}
 
 addMoreBtns.forEach((button) => {
 	button.addEventListener("click", () => {
 		const parent = button.parentNode;
+		const parentSlot = parent.getAttribute("data-slot");
+		const allInputElements = parent.querySelectorAll("input");
+		const placeholder =
+			allInputElements[allInputElements.length - 1].getAttribute("placeholder");
+		const placeholderSplit = placeholder.split(" ");
+		const placeholderText = placeholderSplit.slice(0, -1).join(" ");
+		const placeholderNumber =
+			Number(placeholderSplit[placeholderSplit.length - 1]) + 1;
+		const newElementPlaceholder = `${placeholderText} ${placeholderNumber}`;
 
 		// Create a container div for the input and button
 		const fieldContainer = document.createElement("div");
-		fieldContainer.classList.add("input-group"); // Add a class for styling if needed
+		fieldContainer.classList.add("input-group", "from-addMore"); // Add a class for styling if needed
 
 		const newField = document.createElement("input");
+		newField.setAttribute("data-slot", parentSlot);
+		newField.setAttribute("placeholder", newElementPlaceholder);
+		addInputEventHandler(newField);
 		newField.type = "text";
 
 		// Create the remove button
@@ -30,5 +61,3 @@ addMoreBtns.forEach((button) => {
 		});
 	});
 });
-
-console.log("hello");

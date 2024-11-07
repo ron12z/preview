@@ -30,12 +30,14 @@
 		const allChecked = document.querySelectorAll(".checked");
 		const allInputs = document.querySelectorAll("input");
 		const allAdditionalInputs = document.querySelectorAll(".additional-input");
+		const allInputFromAddmore = document.querySelectorAll(".from-addMore");
 
 		allChecked.forEach((i) => i.classList.remove("checked"));
 		allInputs.forEach((i) => (i.value = ""));
 		allAdditionalInputs.forEach(
 			(i) => ((i as HTMLElement).style.display = "none")
 		);
+		allInputFromAddmore.forEach((i) => i.remove());
 
 		resetEscalation();
 	});

@@ -1,83 +1,23 @@
 ---
 import AddMoreButton from "../AddMoreButton.astro";
+import Input from "./Input.astro";
+
+const { id, additionalDesc, slot1, slot2, slot3, slot4 } =
+	Astro.props.restriction;
 ---
 
-<div id="sa1_cards" class="additional-input">
-	<h4>Card Numbers:</h4>
+<div id={`${id}-extra`} class="additional-input">
+	<h4>{additionalDesc}:</h4>
 	<div class="input-fields">
-		<input
-			id="sa1_card1"
-			type="text"
-			placeholder="Card used for withdrawal"
-			data-ignore="ignore"
-		/>
-		<input
-			id="sa1_card2"
-			type="text"
-			placeholder="Card used for larger deposit"
-		/>
-		<AddMoreButton />
+		{slot1 && <Input slotRole={slot1} slot="slot1" />}
+		{slot2 && <Input slotRole={slot2} slot="slot2" />}
+		{slot3 && <Input slotRole={slot3} slot="slot3" />}
+		{slot4 && <Input slotRole={slot4} slot="slot4" />}
 	</div>
 </div>
 
 <style>
-	.input-group {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 0;
-	}
-
-	.input-fields {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.3rem;
-		flex-shrink: 1;
-	}
-
-	input {
-		padding: 0.2rem;
-		border-radius: 0.3rem;
-		border: none;
-		background: rgb(247, 247, 247);
-		padding-inline: 0.3rem;
-		caret-color: black;
-		height: var(--input_button);
-	}
-
-	button.addMore {
-		height: 0.7rem;
-		background-color: #abf5bf;
-		border-radius: 0.6rem;
-		border: 1px solid #424a43;
-		display: inline-block;
-		cursor: pointer;
-		color: #3d1e3d;
-		padding: 0.3rem;
-		height: var(--input_button);
-	}
-	button.addMore:hover {
-		background-color: #306115;
-		color: white;
-	}
-
-	button.remove-button {
-		cursor: pointer;
-		background: pink;
-		border: 1px solid grey;
-		border-radius: 3px;
-		position: relative;
-		right: 1.45rem;
-		margin-right: -1.3rem;
-		opacity: 0.8;
-	}
-
-	button.remove-button:hover {
-		background: rgb(207, 155, 162);
-	}
-
-	button.remove-button:active {
-		position: relative;
-		top: 1px;
+	.additional-input {
+		display: none;
 	}
 </style>

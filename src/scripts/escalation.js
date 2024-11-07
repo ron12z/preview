@@ -24,19 +24,58 @@ function formatInputs(result) {
 
 // Use this in event's listener of selection, choices, and input fields
 export function addEscalation(id) {
+	function getInputFieldContents(slotGroup) {
+		const allInputFields = slotGroup.querySelectorAll("input");
+		let result = [];
+
+		allInputFields.forEach((input) => {
+			if (input.value) {
+				result.push(input.value.trim());
+			}
+		});
+
+		console.log(result);
+		return result;
+	}
+
 	const restriction = document.querySelector(`#${id}`);
 	const linkedExtra = document.querySelector(`#${id}-extra`);
 	const escalation = restriction.getAttribute("data-escalation");
 
 	if (linkedExtra) {
-		const selectedOption = linkedExtra
-			.querySelector(".selected")
-			.getAttribute("data-value")
-			.trim();
-		const slot1values = [];
-		const slot2values = [];
-		const slot3values = [];
-		const slot4values = [];
+		const selected = linkedExtra.querySelector(".selected");
+
+		const selectedOption = selected
+			? linkedExtra.querySelector(".selected").getAttribute("data-value").trim()
+			: "";
+
+		const slotGroup1 = linkedExtra.querySelector("[data-slot=slot1]");
+		const slotGroup2 = linkedExtra.querySelector("[data-slot=slot2]");
+		const slotGroup3 = linkedExtra.querySelector("[data-slot=slot3]");
+		const slotGroup4 = linkedExtra.querySelector("[data-slot=slot4]");
+
+		const slot1values = getInputFieldContents(slotGroup1);
+		const slot2values = getInputFieldContents(slotGroup2);
+		const slot3values = getInputFieldContents(slotGroup3);
+		const slot4values = getInputFieldContents(slotGroup4);
+
+		// Add values of each input within slot groups to corresponding slotvalues array
+		function getInputFieldContents(slotGroup) {
+			let result = [];
+
+			if (slotGroup) {
+				const allInputFields = slotGroup.querySelectorAll("input");
+
+				allInputFields.forEach((input) => {
+					if (input.value) {
+						result.push(input.value.trim());
+					}
+				});
+			}
+
+			console.log(result);
+			return result;
+		}
 
 		const slot1 = formatInputs(slot1values)
 			? formatInputs(slot1values).trim()
@@ -53,10 +92,22 @@ export function addEscalation(id) {
 
 		//Replace [option] and [slot#] from data-escalation
 		const optionFilled = escalation.replace("[option]", selectedOption);
-		const slot1Filled = optionFilled.replace("[slot1]", slot1);
-		const slot2Filled = slot1Filled.replace("[slot2]", slot2);
-		const slot3Filled = slot2Filled.replace("[slot3]", slot3);
-		const slot4Filled = slot3Filled.replace("[slot4]", slot4);
+		const slot1Filled = optionFilled.replace(
+			"[slot1]",
+			slot1 ? slot1 : "[slot1]"
+		);
+		const slot2Filled = slot1Filled.replace(
+			"[slot2]",
+			slot2 ? slot2 : "[slot2]"
+		);
+		const slot3Filled = slot2Filled.replace(
+			"[slot3]",
+			slot3 ? slot3 : "[slot3]"
+		);
+		const slot4Filled = slot3Filled.replace(
+			"[slot4]",
+			slot4 ? slot4 : "[slot4]"
+		);
 
 		ActiveEscalations[id] = slot4Filled;
 	} else {
@@ -106,9 +157,27 @@ export function updateResult() {
 	console.log(ActiveEscalations);
 }
 
+function inputFieldEventHandler(event) {
+	const inputField = event.currentTarget;
+
+	const id = inputField.parentElement.parentElement.parentElement
+		.getAttribute("id")
+		.replace("-extra", "");
+
+	addEscalation(id);
+	updateResult();
+}
+
+function addInputEventHandler(inputField) {
+	["keyup", "keydown", "blur"].forEach((eventType) => {
+		inputField.addEventListener(eventType, inputFieldEventHandler);
+	});
+}
+
 export default {
 	updateResult,
 	removeEscalation,
 	addEscalation,
 	resetEscalation,
+	addInputEventHandler,
 };
