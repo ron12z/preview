@@ -1,8 +1,8 @@
 [
 	{
 		"id": "threshold",
-		"display": "WD amount more than threshold",
-		"description": "WD amount more than threshold",
+		"display": "WD amount greater than allowed threshold",
+		"description": "WD amount greater than allowed threshold",
 		"escalation": "WD greater than [option]",
 		"additionalDesc": "Account Status",
 		"options": {
@@ -12,7 +12,7 @@
 	},
 
 	{
-		"id": "accountStatus",
+		"id": "account-status",
 		"display": "Account is suspended/closed",
 		"description": "Account is suspended/closed",
 		"escalation": "account is [option]",
@@ -45,7 +45,7 @@
 
 	{
 		"id": "lost",
-		"display": "Has lost/stolen failed deposit in the past 7 days",
+		"display": "Lost/Stolen",
 		"description": "Has lost/stolen failed deposit in the past 7 days",
 		"escalation": "([slot1]) has been reported lost or stolen",
 		"additionalDesc": "Failed Deposit/s Details",
@@ -106,7 +106,7 @@
 
 	{
 		"id": "new-location",
-		"display": "Account is on a new device in a new location",
+		"display": "New device, new location",
 		"description": "Account is on a new device in a new location",
 		"escalation": "account is on a new device in a new location"
 	},
@@ -124,14 +124,14 @@
 
 	{
 		"id": "no-initial-deposit",
-		"display": "Account has no initial deposit and winnings NOT from free bet or PB Migrated funds",
+		"display": "No initial deposit",
 		"description": "Account has no initial deposit and winnings NOT from free bet or PB Migrated funds",
 		"escalation": "no intial deposit"
 	},
 
 	{
 		"id": "zip-code",
-		"display": "Has 2 or more ZIP Codes",
+		"display": "ZIP Code",
 		"description": "Has 2 or more ZIP Codes",
 		"escalation": "has 2 or more zip codes used within the past 24 hours"
 	},
@@ -144,65 +144,84 @@
 	},
 
 	{
-		"id": "",
-		"display": "",
-		"description": "",
-		"escalation": ""
+		"id": "no-permission",
+		"display": "No permission to Open in NATS",
+		"description": "No permission to Open in NATS - NJ/PA/WV Client",
+		"escalation": "[slot1] client withdrawing to [slot2], no permission to open in NATS",
+		"additionalDesc": "Client States Info",
+		"slot1": {
+			"Client State": 1
+		},
+		"slot2": {
+			"Withdrawing to: (PA/WV)": 1
+		}
 	},
 
 	{
-		"id": "",
-		"display": "",
-		"description": "",
-		"escalation": ""
+		"id": "nj-client",
+		"display": "NJ Client withdrawing to Licensed State",
+		"description": "NJ Client is withdrawing on a Licensed state such as PA/WV",
+		"escalation": "NJ Client withdrawing in [option] - No License",
+		"additionalDesc": "Client Withdrawal State",
+		"options": {
+			"PA": "PA",
+			"WV": "WV",
+			"NJ": "NJ"
+		}
 	},
 
 	{
-		"id": "",
-		"display": "",
-		"description": "",
-		"escalation": ""
+		"id": "device-sharing-initial",
+		"display": "Device Sharing: First Escalation",
+		"description": "Device Sharing - If device sharing with any (not already known per NATS or Sift notes) Open, Timeout, Self Exclusion, Suspended or Closed Account.",
+		"escalation": "has [slot1] related users - New device links to [slot2]",
+		"additionalDesc": "Number of Related Users and Accounts Details",
+		"slot1": {
+			"Number of Related Users": 1
+		},
+		"slot2": {
+			"Account Number and Status": 1,
+			"addMoreButton": true
+		}
 	},
 
 	{
-		"id": "",
-		"display": "",
-		"description": "",
-		"escalation": ""
+		"id": "device-sharing-next",
+		"display": "Device Sharing: Previously Escalated",
+		"description": "Device Sharing - If there's a new device on the account which is not part of the previous escalation.",
+		"escalation": "now has [slot1] related users - device sharing with new account [slot2]",
+		"additionalDesc": "Number of Related Users and Accounts Details",
+		"slot1": {
+			"Number of Related Users": 1
+		},
+		"slot2": {
+			"Account Number and Status": 1,
+			"addMoreButton": true
+		}
 	},
 
 	{
-		"id": "",
-		"display": "",
-		"description": "",
-		"escalation": ""
+		"id": "device-sharing-four",
+		"display": "Device Sharing: 4+ related users",
+		"description": "Device Sharing - If device sharing with 4+ active, suspended, or closed accounts that are not already known then do not need to include account numbers in notes",
+		"escalation": "has [slot1] related users - [slot2] accounts on devices",
+		"additionalDesc": "Number of Related Users and Number of Linked Devices",
+		"slot1": {
+			"Number of Related Users": 1
+		},
+		"slot2": {
+			"Number of Linked Devices": 1
+		}
 	},
 
 	{
-		"id": "",
-		"display": "",
-		"description": "",
-		"escalation": ""
-	},
-
-	{
-		"id": "",
-		"display": "",
-		"description": "",
-		"escalation": ""
-	},
-
-	{
-		"id": "",
-		"display": "",
-		"description": "",
-		"escalation": ""
-	},
-
-	{
-		"id": "",
-		"display": "",
-		"description": "",
-		"escalation": ""
+		"id": "device-sharing-hidden",
+		"display": "Device Sharing: Can't search amelco in NATS",
+		"description": "Device Sharing - If unable to view the amelco in NATS probably NJ or PA region",
+		"escalation": "sharing with [slot1] account, unable to view",
+		"additionalDesc": "Client States Info",
+		"slot1": {
+			"Client State": 1
+		}
 	}
 ]
