@@ -53,6 +53,13 @@ export function addEscalation(id) {
 		const slotGroup2 = linkedExtra.querySelector("[data-slot=slot2]");
 		const slotGroup3 = linkedExtra.querySelector("[data-slot=slot3]");
 		const slotGroup4 = linkedExtra.querySelector("[data-slot=slot4]");
+		const allInputFields = linkedExtra.querySelectorAll("input");
+		let inputCount = 0;
+		allInputFields.forEach((input) => {
+			if (input.value != "") {
+				inputCount++;
+			}
+		});
 
 		const slot1values = getInputFieldContents(slotGroup1);
 		const slot2values = getInputFieldContents(slotGroup2);
@@ -109,7 +116,9 @@ export function addEscalation(id) {
 			slot4 ? slot4 : "[slot4]"
 		);
 
-		ActiveEscalations[id] = slot4Filled;
+		const final = slot4Filled.replace("[inputCount]", inputCount);
+
+		ActiveEscalations[id] = final;
 	} else {
 		ActiveEscalations[id] = escalation;
 	}

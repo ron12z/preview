@@ -28,7 +28,7 @@
 		"id": "name",
 		"display": "Name mismatch",
 		"description": "Name mismatch",
-		"escalation": "[namesCount] different names in account: [slot1]",
+		"escalation": "[inputCount] different names in account: [slot1]",
 		"additionalDesc": "Names In Account",
 		"slot1": {
 			"Name": 2,
@@ -181,7 +181,8 @@
 		},
 		"slot2": {
 			"Account Number and Status": 1,
-			"addMoreButton": true
+			"addMoreButton": true,
+			"hasStatusOption": true
 		}
 	},
 
@@ -196,7 +197,8 @@
 		},
 		"slot2": {
 			"Account Number and Status": 1,
-			"addMoreButton": true
+			"addMoreButton": true,
+			"hasStatusOption": true
 		}
 	},
 
