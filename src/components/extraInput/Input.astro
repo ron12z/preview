@@ -1,5 +1,6 @@
 ---
 import AddMore from "../AddMoreButton.astro";
+import SpecialChoicesButtons from "./SpecialChoicesButtons.astro";
 
 const { slotRole, slot } = Astro.props;
 
@@ -20,14 +21,24 @@ const placeholdercounter = counter();
 ---
 
 <div class="slotGroup" data-slot={slot}>
-	{
-		Array.from({ length: Number(count) }, (_, index) => (
-			<input
-				type="text"
-				placeholder={`${placeholder} ${placeholdercounter()}`}
-			/>
-		))
-	}
+	<>
+		{
+			Array.from({ length: Number(count) }, (_, index) => (
+				<input
+					type="text"
+					placeholder={`${placeholder} ${placeholdercounter()}`}
+				/>
+			))
+		}
+
+		{
+			hasStatusOption && (
+				<div>
+					<SpecialChoicesButtons />
+				</div>
+			)
+		}
+	</>
 
 	{addMoreBtn && <AddMore placeholder={placeholder} />}
 </div>
