@@ -34,7 +34,6 @@ export function addEscalation(id) {
 			}
 		});
 
-		console.log(result);
 		return result;
 	}
 
@@ -80,7 +79,6 @@ export function addEscalation(id) {
 				});
 			}
 
-			console.log(result);
 			return result;
 		}
 
@@ -122,12 +120,14 @@ export function addEscalation(id) {
 	} else {
 		ActiveEscalations[id] = escalation;
 	}
+
+	// console.log(`${id} added`);
 }
 
 export function removeEscalation(id) {
 	if (Object.keys(ActiveEscalations).includes(id)) {
 		delete ActiveEscalations[id];
-		console.log(`${id} removed`);
+		// console.log(`${id} removed`);
 	}
 }
 
@@ -162,14 +162,13 @@ export function updateResult() {
 	} else {
 		resultP.textContent = "No restrictions selected.";
 	}
-
-	console.log(ActiveEscalations);
 }
 
 function inputFieldEventHandler(event) {
 	const inputField = event.currentTarget;
 
-	const id = inputField.parentElement.parentElement.parentElement
+	const id = inputField
+		.closest(".additional-input")
 		.getAttribute("id")
 		.replace("-extra", "");
 

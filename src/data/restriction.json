@@ -113,12 +113,14 @@
 
 	{
 		"id": "licensed-state",
-		"display": "Licensed State (PA, WV)",
+		"display": "Licensed State (PA, WV, NJ)",
 		"description": "Licensed State (PA, WV)",
-		"escalation": "([slot1]) Account, no license",
+		"escalation": "([option]) Account, no license",
 		"additionalDesc": "State",
-		"slot1": {
-			"PA/WV/Others": 1
+		"options": {
+			"PA": "PA",
+			"WV": "WV",
+			"NJ": "NJ"
 		}
 	},
 

@@ -21,24 +21,30 @@ const placeholdercounter = counter();
 ---
 
 <div class="slotGroup" data-slot={slot}>
-	<>
-		{
-			Array.from({ length: Number(count) }, (_, index) => (
-				<input
-					type="text"
-					placeholder={`${placeholder} ${placeholdercounter()}`}
-				/>
-			))
-		}
+	{
+		hasStatusOption
+			? Array.from({ length: Number(count) }, (_, index) => (
+					<div class="input-group">
+						<input
+							type="text"
+							data-special={hasStatusOption ? "true" : "false"}
+							placeholder={`${placeholder} ${placeholdercounter()}`}
+						/>
+						<SpecialChoicesButtons />
+					</div>
+				))
+			: Array.from({ length: Number(count) }, (_, index) => (
+					<div class="input-group">
+						<input
+							type="text"
+							data-special={hasStatusOption ? "true" : "false"}
+							placeholder={`${placeholder} ${placeholdercounter()}`}
+						/>
+					</div>
+				))
+	}
 
-		{
-			hasStatusOption && (
-				<div>
-					<SpecialChoicesButtons />
-				</div>
-			)
-		}
-	</>
+	<!-- {hasStatusOption && <SpecialChoicesButtons />} -->
 
 	{addMoreBtn && <AddMore placeholder={placeholder} />}
 </div>

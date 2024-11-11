@@ -1,31 +1,20 @@
 import Escalation from "./escalation.js";
+import activateSpecialButtons from "./specialButtons.js";
 
 const addMoreBtns = document.querySelectorAll(".addMore");
 
-function inputFieldEventHandler(event) {
-	const inputField = event.currentTarget;
-
-	const id = inputField.parentElement.parentElement.parentElement.parentElement
-		.getAttribute("id")
-		.replace("-extra", "");
-
-	Escalation.addEscalation(id);
-	Escalation.updateResult();
-}
-
-function addInputEventHandler(inputField) {
-	["keyup", "keydown", "blur"].forEach((eventType) => {
-		inputField.addEventListener(eventType, inputFieldEventHandler);
-	});
-}
-
 addMoreBtns.forEach((button) => {
 	button.addEventListener("click", () => {
+		const id = button
+			.closest(".additional-input")
+			.getAttribute("id")
+			.replace("-extra", "");
+
 		const parent = button.parentNode;
 		const parentSlot = parent.getAttribute("data-slot");
 		const allInputElements = parent.querySelectorAll("input");
-		const placeholder =
-			allInputElements[allInputElements.length - 1].getAttribute("placeholder");
+		const lastInputElement = allInputElements[allInputElements.length - 1];
+		const placeholder = lastInputElement.getAttribute("placeholder");
 		const placeholderSplit = placeholder.split(" ");
 		const placeholderText = placeholderSplit.slice(0, -1).join(" ");
 		const placeholderNumber =
@@ -39,7 +28,7 @@ addMoreBtns.forEach((button) => {
 		const newField = document.createElement("input");
 		newField.setAttribute("data-slot", parentSlot);
 		newField.setAttribute("placeholder", newElementPlaceholder);
-		addInputEventHandler(newField);
+		Escalation.addInputEventHandler(newField);
 		newField.type = "text";
 
 		// Create the remove button
@@ -47,17 +36,56 @@ addMoreBtns.forEach((button) => {
 		removeButton.textContent = "❌"; // Or any suitable label
 		removeButton.classList.add("remove-button");
 
+		// Add event listener to the remove button
+		removeButton.addEventListener("click", () => {
+			parent.removeChild(fieldContainer); // Remove the entire container
+			Escalation.addEscalation(id);
+			Escalation.updateResult();
+		});
+
 		// Append input and button to the container
 		fieldContainer.appendChild(newField);
 		fieldContainer.appendChild(removeButton);
 
+		// If lastInputElement is special, add buttons in innerHTML or fieldContainer
+		if (lastInputElement.getAttribute("data-special") == "true") {
+			newField.setAttribute("data-special", "true");
+
+			const div = document.createElement("div");
+
+			const buttonOpen = document.createElement("button");
+			buttonOpen.className = "open";
+			buttonOpen.setAttribute("data-value", "(Open)");
+			buttonOpen.textContent = "O";
+
+			const buttonSuspended = document.createElement("button");
+			buttonSuspended.className = "suspended";
+			buttonSuspended.setAttribute("data-value", "(Suspended)");
+			buttonSuspended.textContent = "S";
+
+			const buttonClosed = document.createElement("button");
+			buttonClosed.className = "closed";
+			buttonClosed.setAttribute("data-value", "(Closed)");
+			buttonClosed.textContent = "C";
+
+			const buttonTimeout = document.createElement("button");
+			buttonTimeout.className = "timeout";
+			buttonTimeout.setAttribute("data-value", "(Timeout)");
+			buttonTimeout.textContent = "T";
+
+			div.appendChild(buttonOpen);
+			div.appendChild(buttonSuspended);
+			div.appendChild(buttonClosed);
+			div.appendChild(buttonTimeout);
+
+			fieldContainer.appendChild(div); // Append instead of innerHTML
+		} else {
+			newField.setAttribute("data-special", "false");
+		}
+
 		// Insert the container before the "Add More" button
 		parent.insertBefore(fieldContainer, button);
 		newField.focus();
-
-		// Add event listener to the remove button
-		removeButton.addEventListener("click", () => {
-			parent.removeChild(fieldContainer); // Remove the entire container
-		});
+		activateSpecialButtons();
 	});
 });

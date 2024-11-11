@@ -1,4 +1,7 @@
 ---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
 interface Props {
 	title: string;
 }
@@ -15,6 +18,15 @@ const { title = "Default Title" } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<Header />
 		<slot />
+		<Footer>
+			<slot name="footer">
+				<p>
+					For suggestions/corrections/feedback, please inform TL Chaddy or
+					me(aaron.talua.xc) via Google Chat/Slack 🙂
+				</p>
+			</slot>
+		</Footer>
 	</body>
 </html>

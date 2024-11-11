@@ -6,17 +6,15 @@ import Restriction from "../components/Restriction.astro";
 
 // Data import
 import allRestrictions from "../data/restriction.json";
+import RestrictionList from "../components/RestrictionList.astro";
 
 const title = "Home Page";
 ---
 
 <MainLayout title={title}>
 	<Escalation />
-	{
-		allRestrictions.map((restriction) => (
-			<Restriction restriction={restriction} />
-		))
-	}
+	<RestrictionList />
+	<!-- <p slot="footer">HELLO!!</p> -->
 </MainLayout>
 
 <script>
@@ -28,3 +26,4 @@ const title = "Home Page";
 </script>
 
 <script src="../scripts/addMore"></script>
+<script src="../scripts/copyEscalation"></script>

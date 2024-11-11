@@ -1,0 +1,12 @@
+---
+import Restriction from "../components/Restriction.astro";
+import allRestrictions from "../data/restriction.json";
+---
+
+<div class="restriction-list">
+	{
+		allRestrictions.map((restriction) => (
+			<Restriction restriction={restriction} />
+		))
+	}
+</div>

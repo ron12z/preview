@@ -1,61 +1,11 @@
-<button class="open" data-value="(Open)">O</button>
-<button class="suspended" data-value="(Suspended)">S</button>
-<button class="closed" data-value="(Closed)">C</button>
-<button class="timeout" data-value="(Timeout)">O</button>
+<div>
+	<button class="open" data-value="(Open)">O</button>
+	<button class="suspended" data-value="(Suspended)">S</button>
+	<button class="closed" data-value="(Closed)">C</button>
+	<button class="timeout" data-value="(Timeout)">T</button>
+</div>
 
 <script>
-	import Escalation from "../../scripts/escalation";
-	const specialButtons = document.querySelectorAll(
-		"button.open, button.suspended, button.closed, button.timeout"
-	);
-
-	specialButtons.forEach((button) => {
-		const value = button.getAttribute("data-value")!;
-		const valuesList = ["(Open)", "(Suspended)", "(Closed)", "(Timeout)"];
-
-		button.addEventListener("click", () => {
-			const id = button
-				.closest(".additional-input")
-				?.getAttribute("id")!
-				.replace("-extra", "");
-			console.log("🚀 ~ button.addEventListener ~ id:", id);
-			const target = button.parentElement!.previousSibling!;
-			const prevValue = (target as HTMLInputElement).value;
-			if (hasStatusAlready(prevValue)) {
-				valuesList.forEach((oldValue) => {
-					(target as HTMLInputElement).value = (
-						target as HTMLInputElement
-					).value.replace(oldValue, value);
-				});
-			} else {
-				(target as HTMLInputElement).value += ` ${value}`;
-			}
-
-			// AddEscalation
-			Escalation.addEscalation(id);
-			Escalation.updateResult();
-		});
-	});
-
-	function hasStatusAlready(string: string) {
-		let hasStatus = false;
-
-		if (string.toLowerCase().includes("(open)")) {
-			return true;
-		}
-
-		if (string.toLowerCase().includes("(suspended)")) {
-			return true;
-		}
-
-		if (string.toLowerCase().includes("(closed)")) {
-			return true;
-		}
-
-		if (string.toLowerCase().includes("(timeout)")) {
-			return true;
-		}
-
-		return false;
-	}
+	import activateSpecialButtons from "../../scripts/specialButtons";
+	activateSpecialButtons();
 </script>
