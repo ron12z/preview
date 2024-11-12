@@ -3,24 +3,23 @@ function handleEscalationClick() {
 	const escalation = document.querySelector("#escalation-result");
 	const textToCopy = escalation.textContent;
 
-	navigator.clipboard
-		.writeText(textToCopy)
-		.then(() => {
-			const popup = document.createElement("div");
-			popup.classList.add("popup");
-			popup.textContent = "Copied to clipboard!";
-			escalation.appendChild(popup);
+	navigator.clipboard.writeText(textToCopy);
+	// .then(() => {
+	// 	const popup = document.createElement("div");
+	// 	popup.classList.add("popup");
+	// 	popup.textContent = "Copied to clipboard!";
+	// 	escalation.appendChild(popup);
 
-			setTimeout(() => {
-				popup.style.opacity = "0";
-				setTimeout(() => {
-					escalation.removeChild(popup);
-				}, 300); // Match the duration of the transition
-			}, 500); // Display duration;
-		})
-		.catch((err) => {
-			console.error("Could not copy text: ", err);
-		});
+	// 	setTimeout(() => {
+	// 		popup.style.opacity = "0";
+	// 		setTimeout(() => {
+	// 			escalation.removeChild(popup);
+	// 		}, 300); // Match the duration of the transition
+	// 	}, 500); // Display duration;
+	// })
+	// .catch((err) => {
+	// 	console.error("Could not copy text: ", err);
+	// });
 }
 
 function CtoCopy(event) {
@@ -38,3 +37,5 @@ function CtoCopy(event) {
 
 const result = document.querySelector("#escalation-result");
 result.addEventListener("click", handleEscalationClick);
+
+document.addEventListener("keydown", CtoCopy);
