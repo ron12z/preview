@@ -18,7 +18,7 @@ const { title = "Default Title" } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<Header />
+		<Header title={title} />
 		<slot />
 		<Footer>
 			<slot name="footer">
@@ -30,3 +30,14 @@ const { title = "Default Title" } = Astro.props;
 		</Footer>
 	</body>
 </html>
+
+<style>
+	body {
+		background: url("./blue2.webp");
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		background-size: cover;
+		background-attachment: fixed;
+	}
+</style>

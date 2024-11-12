@@ -2,13 +2,11 @@
 // Components import
 import MainLayout from "../layouts/MainLayout.astro";
 import Escalation from "../components/Escalation.astro";
-import Restriction from "../components/Restriction.astro";
 
 // Data import
-import allRestrictions from "../data/restriction.json";
 import RestrictionList from "../components/RestrictionList.astro";
 
-const title = "Home Page";
+const title = "Escalator";
 ---
 
 <MainLayout title={title}>
@@ -27,3 +25,21 @@ const title = "Home Page";
 
 <script src="../scripts/addMore"></script>
 <script src="../scripts/copyEscalation"></script>
+
+<style>
+	*,
+	*::after,
+	*::before {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	ul {
+		list-style-type: none;
+	}
+</style>
