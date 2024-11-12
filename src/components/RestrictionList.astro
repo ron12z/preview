@@ -1,12 +1,26 @@
 ---
 import Restriction from "../components/Restriction.astro";
 import allRestrictions from "../data/restriction.json";
+import Escalation from "./Escalation.astro";
 ---
 
-<div class="restriction-list">
-	{
-		allRestrictions.map((restriction) => (
-			<Restriction restriction={restriction} />
-		))
-	}
+<div class="content my-5">
+	<Escalation />
+	<div class="restriction-list">
+		{
+			allRestrictions.map((restriction) => (
+				<Restriction restriction={restriction} />
+			))
+		}
+	</div>
 </div>
+
+<style>
+	.content {
+		margin-block: 1rem;
+		border: 1px solid black;
+		border-radius: 2rem;
+		overflow: hidden;
+		margin-inline: 10rem;
+	}
+</style>
