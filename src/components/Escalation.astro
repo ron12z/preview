@@ -15,6 +15,23 @@
 		padding: 1rem;
 		display: flex;
 		gap: 0.5rem;
+		position: relative;
+		cursor: not-allowed;
+	}
+
+	#escalation-result {
+		width: 100%;
+		height: 100%;
+	}
+
+	#escalation-result::after {
+		content: " -Press C or Click to copy.";
+		color: black;
+		opacity: 0.5;
+	}
+
+	#escalation-result.no-content::after {
+		content: "";
 	}
 
 	button {
@@ -34,12 +51,6 @@
 			position: relative;
 			top: 3px;
 		}
-	}
-
-	#escalation-result {
-		width: 100%;
-		height: 100%;
-		cursor: not-allowed;
 	}
 </style>
 
