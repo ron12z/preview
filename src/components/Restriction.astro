@@ -30,19 +30,20 @@ const slot4 = restriction.slot4;
 const additionalInputID = `${id}-extra`;
 ---
 
-<div
-	id={id}
-	class="selection"
-	data-extra-id={additionalInputID}
-	data-escalation={escalation}
->
-	<p>{display}</p>
+<div class="selection-wrapper">
+	<div
+		id={id}
+		class="selection"
+		data-extra-id={additionalInputID}
+		data-escalation={escalation}
+	>
+		<p>{display}</p>
+	</div>
+
+	{options && <Choices restriction={restriction} />}
+
+	{!options && additionalDesc && <Inputs restriction={restriction} />}
 </div>
-
-{options && <Choices restriction={restriction} />}
-
-{!options && additionalDesc && <Inputs restriction={restriction} />}
-
 <script>
 	import Escalation from "../scripts/escalation";
 

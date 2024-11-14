@@ -25,6 +25,9 @@ addMoreBtns.forEach((button) => {
 		const fieldContainer = document.createElement("div");
 		fieldContainer.classList.add("input-group", "from-addMore"); // Add a class for styling if needed
 
+		const newFieldWrapper = document.createElement("div");
+		newFieldWrapper.classList.add("input-wrapper");
+
 		const newField = document.createElement("input");
 		newField.setAttribute("data-slot", parentSlot);
 		newField.setAttribute("placeholder", newElementPlaceholder);
@@ -33,7 +36,7 @@ addMoreBtns.forEach((button) => {
 
 		// Create the remove button
 		const removeButton = document.createElement("button");
-		removeButton.textContent = "❌"; // Or any suitable label
+		removeButton.textContent = "❌";
 		removeButton.classList.add("remove-button");
 
 		// Add event listener to the remove button
@@ -44,14 +47,19 @@ addMoreBtns.forEach((button) => {
 		});
 
 		// Append input and button to the container
-		fieldContainer.appendChild(newField);
-		fieldContainer.appendChild(removeButton);
+		newFieldWrapper.appendChild(removeButton);
+		newFieldWrapper.appendChild(newField);
+		fieldContainer.appendChild(newFieldWrapper);
 
 		// If lastInputElement is special, add buttons in innerHTML or fieldContainer
 		if (lastInputElement.getAttribute("data-special") == "true") {
 			newField.setAttribute("data-special", "true");
 
 			const div = document.createElement("div");
+			div.classList.add("special-buttons");
+
+			const statusLabel = document.createElement("h5");
+			statusLabel.textContent = "Status:";
 
 			const buttonOpen = document.createElement("button");
 			buttonOpen.className = "open";
@@ -73,6 +81,7 @@ addMoreBtns.forEach((button) => {
 			buttonTimeout.setAttribute("data-value", "(Timeout)");
 			buttonTimeout.textContent = "T";
 
+			div.appendChild(statusLabel);
 			div.appendChild(buttonOpen);
 			div.appendChild(buttonSuspended);
 			div.appendChild(buttonClosed);

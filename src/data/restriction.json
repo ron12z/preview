@@ -179,10 +179,10 @@
 		"escalation": "has [slot1] related users - New device links to [slot2]",
 		"additionalDesc": "Number of Related Users and Accounts Details",
 		"slot1": {
-			"Number of Related Users": 1
+			"Related Users": 1
 		},
 		"slot2": {
-			"Account Number and Status": 1,
+			"Account Number": 1,
 			"addMoreButton": true,
 			"hasStatusOption": true
 		}
@@ -195,10 +195,10 @@
 		"escalation": "now has [slot1] related users - device sharing with new account [slot2]",
 		"additionalDesc": "Number of Related Users and Accounts Details",
 		"slot1": {
-			"Number of Related Users": 1
+			"Related Users": 1
 		},
 		"slot2": {
-			"Account Number and Status": 1,
+			"Account Number": 1,
 			"addMoreButton": true,
 			"hasStatusOption": true
 		}
@@ -211,15 +211,15 @@
 		"escalation": "has [slot1] related users - [slot2] accounts on devices",
 		"additionalDesc": "Number of Related Users and Number of Linked Devices",
 		"slot1": {
-			"Number of Related Users": 1
+			"Related Users": 1
 		},
 		"slot2": {
-			"Number of Linked Devices": 1
+			"Linked Devices": 1
 		}
 	},
 
 	{
-		"id": "device-sharing-hidden",
+		"id": "device-sharing-unable",
 		"display": "Device Sharing: Can't search amelco in NATS",
 		"description": "Device Sharing - If unable to view the amelco in NATS probably NJ or PA region",
 		"escalation": "sharing with [slot1] account, unable to view",

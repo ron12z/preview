@@ -37,9 +37,10 @@ export default function activateSpecialButtons() {
 				.getAttribute("id")
 				.replace("-extra", "");
 
-			let target = button.parentElement.previousSibling;
-			if (target.tagName != "INPUT") {
-				target = target.previousSibling;
+			let target = button.parentElement.previousElementSibling;
+
+			if (target.tagName !== "INPUT") {
+				target = target.querySelector("input");
 			}
 
 			const prevValue = target.value;
