@@ -1,5 +1,6 @@
 ---
-
+import { Image } from "astro:assets";
+import GCashQR from "../files/GCashQR.webp";
 ---
 
 <footer>
@@ -9,11 +10,12 @@
 		me(aaron.talua.xc) via Google Chat/Slack 🙂
 	</slot>
 	<p>
-		Want to donate? -> <span id="show-QR" class="noselect">Gcash QR</span>
+		Want to donate? ➡ <span id="show-QR" class="noselect">Gcash QR</span>
 	</p>
 
 	<div class="donate-info">
-		<img id="GcashQR" src="/GCashQR.webp" width="300" height="300" />
+		<!-- <img id="GcashQR" src="/GCashQR.webp" width="300" height="300" /> -->
+		<Image src={GCashQR} alt="GcashQR" width="300" height="300" />
 		<p>I really appreciate it.</p>
 		<p>Thank you so much! 💖</p>
 	</div>

@@ -92,7 +92,7 @@ input:focus {
 button.remove-button {
 	position: absolute;
 	right: 0.2rem;
-	z-index: 12;
+	z-index: 1;
 }
 
 .popup {
