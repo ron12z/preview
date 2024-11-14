@@ -4,9 +4,8 @@
 
 <div class="escalation">
 	<button id="resetBtn">Reset</button>
-	<div>
-		<p id="escalation-result">Escalator v2</p>
-	</div>
+
+	<p id="escalation-result">Escalator v2</p>
 </div>
 
 <style>
@@ -21,13 +20,14 @@
 
 	#escalation-result {
 		width: 100%;
-		height: 100%;
+		min-height: 100%;
 	}
 
 	#escalation-result::after {
 		content: " -Press C or Click to copy.";
 		color: black;
 		opacity: 0.5;
+		z-index: 0;
 	}
 
 	#escalation-result.no-content::after {
@@ -42,6 +42,7 @@
 		background: lightcoral;
 		border-radius: 0.3rem;
 		align-self: center;
+		z-index: 10;
 
 		&:hover {
 			background: red;

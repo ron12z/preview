@@ -2,26 +2,19 @@ import { getEscalations } from "./escalation";
 
 // For copying escalation
 function handleEscalationClick() {
-	const escalation = document.querySelector("#escalation-result");
-	const textToCopy = escalation.textContent;
+	const escalation = document.querySelector(".escalation");
+	const textToCopy = escalation.querySelector("p").textContent;
 
-	navigator.clipboard.writeText(textToCopy);
-	// .then(() => {
-	// 	const popup = document.createElement("div");
-	// 	popup.classList.add("popup");
-	// 	popup.textContent = "Copied to clipboard!";
-	// 	escalation.appendChild(popup);
+	navigator.clipboard.writeText(textToCopy).then(() => {
+		const popup = document.createElement("div");
+		popup.classList.add("popup");
+		popup.textContent = "Copied to clipboard!";
+		escalation.appendChild(popup);
 
-	// 	setTimeout(() => {
-	// 		popup.style.opacity = "0";
-	// 		setTimeout(() => {
-	// 			escalation.removeChild(popup);
-	// 		}, 300); // Match the duration of the transition
-	// 	}, 500); // Display duration;
-	// })
-	// .catch((err) => {
-	// 	console.error("Could not copy text: ", err);
-	// });
+		setTimeout(() => {
+			escalation.removeChild(popup);
+		}, 500);
+	});
 }
 
 function CtoCopy(event) {
@@ -37,7 +30,6 @@ function CtoCopy(event) {
 	}
 }
 
-const escalation = document.querySelector(".escalation");
 const result = document.querySelector("#escalation-result");
 const header = document.querySelector("header");
 const headerBG = window.getComputedStyle(header).backgroundColor;
@@ -46,16 +38,16 @@ export function setEscalationHandler() {
 	const activeEscalations = getEscalations();
 
 	if (Object.keys(activeEscalations).length != 0) {
-		escalation.addEventListener("click", handleEscalationClick);
+		result.addEventListener("click", handleEscalationClick);
 		result.classList.remove("no-content");
 		document.addEventListener("keydown", CtoCopy);
 		header.style.background = "rgb(160, 60, 60)";
-		escalation.style.cursor = "pointer";
+		result.style.cursor = "pointer";
 	} else {
-		escalation.removeEventListener("click", handleEscalationClick);
+		result.removeEventListener("click", handleEscalationClick);
 		result.classList.add("no-content");
 		document.removeEventListener("keydown", CtoCopy);
 		header.style.background = `${headerBG}`;
-		escalation.style.cursor = "not-allowed";
+		result.style.cursor = "not-allowed";
 	}
 }
