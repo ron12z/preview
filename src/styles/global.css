@@ -54,7 +54,8 @@ input:focus {
 .special-buttons {
 	display: flex;
 	gap: 0.2rem;
-	align-items: center;
+	align-items: flex-end;
+	width: 100%;
 
 	& button {
 		margin-top: 0.3rem;
@@ -62,6 +63,7 @@ input:focus {
 		border: 1px solid green;
 		border-radius: 0.2rem;
 		background: rgb(171, 238, 171);
+		flex-grow: 1;
 
 		&:hover {
 			background: green;
@@ -77,6 +79,14 @@ input:focus {
 			top: 3px;
 		}
 	}
+}
+
+.no-select {
+	user-select: none; /* Prevents text selection */
+}
+
+.selection {
+	cursor: pointer;
 }
 
 button.remove-button {
