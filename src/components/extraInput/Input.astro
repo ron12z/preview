@@ -44,10 +44,17 @@ const placeholdercounter = counter();
 				))
 	}
 
-	<!-- {hasStatusOption && <SpecialChoicesButtons />} -->
-
 	{addMoreBtn && <AddMore placeholder={placeholder} />}
 </div>
+
+<style>
+	.slotGroup {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+	}
+</style>
 
 <script>
 	import Escalation from "../../scripts/escalation";

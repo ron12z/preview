@@ -1,3 +1,5 @@
+import { setEscalationHandler } from "./copyEscalation";
+
 let ActiveEscalations = {};
 
 function formatInputs(result) {
@@ -135,6 +137,10 @@ export function resetEscalation() {
 	ActiveEscalations = {};
 }
 
+export function getEscalations() {
+	return ActiveEscalations;
+}
+
 function capitalizeFirstLetter(str) {
 	if (!str) return str; // Return as is if the string is empty or null
 	return str.charAt(0).toUpperCase() + str.slice(1);
@@ -162,6 +168,8 @@ export function updateResult() {
 	} else {
 		resultP.textContent = "No restrictions selected.";
 	}
+
+	setEscalationHandler();
 }
 
 function inputFieldEventHandler(event) {

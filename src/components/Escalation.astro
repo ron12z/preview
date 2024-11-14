@@ -11,8 +11,8 @@
 
 <style>
 	.escalation {
-		background: lightcoral;
-		padding: 2rem;
+		background: rgb(101, 165, 170);
+		padding: 1rem;
 		display: flex;
 		gap: 0.5rem;
 	}
@@ -20,11 +20,25 @@
 	button {
 		padding: 1rem;
 		border: 1px solid black;
+		height: 100%;
+		width: min(5rem, 30%);
+		background: lightcoral;
+		border-radius: 0.3rem;
+
+		&:hover {
+			background: red;
+		}
+
+		&:active {
+			position: relative;
+			top: 3px;
+		}
 	}
 
 	#escalation-result {
 		width: 100%;
 		height: 100%;
+		cursor: not-allowed;
 	}
 </style>
 

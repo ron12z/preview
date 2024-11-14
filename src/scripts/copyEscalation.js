@@ -1,3 +1,5 @@
+import { getEscalations } from "./escalation";
+
 // For copying escalation
 function handleEscalationClick() {
 	const escalation = document.querySelector("#escalation-result");
@@ -36,6 +38,21 @@ function CtoCopy(event) {
 }
 
 const result = document.querySelector("#escalation-result");
-result.addEventListener("click", handleEscalationClick);
+const header = document.querySelector("header");
+const headerBG = window.getComputedStyle(header).backgroundColor;
 
-document.addEventListener("keydown", CtoCopy);
+export function setEscalationHandler() {
+	const activeEscalations = getEscalations();
+
+	if (Object.keys(activeEscalations).length != 0) {
+		result.addEventListener("click", handleEscalationClick);
+		document.addEventListener("keydown", CtoCopy);
+		header.style.background = "rgb(160, 60, 60)";
+		result.style.cursor = "pointer";
+	} else {
+		result.removeEventListener("click", handleEscalationClick);
+		document.removeEventListener("keydown", CtoCopy);
+		header.style.background = `${headerBG}`;
+		result.style.cursor = "not-allowed";
+	}
+}

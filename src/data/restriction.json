@@ -62,11 +62,11 @@
 		"escalation": "withdrawing to a payment method ([slot1]) used for a small deposit with larger deposits made with ([slot2])",
 		"additionalDesc": "Card Details",
 		"slot1": {
-			"Withdrawal payment method": 1,
+			"WD w/ Small Deposit": 1,
 			"addMoreButton": true
 		},
 		"slot2": {
-			"Payment method with larger deposit": 1,
+			"Large Deposit": 1,
 			"addMoreButton": true
 		}
 	},
