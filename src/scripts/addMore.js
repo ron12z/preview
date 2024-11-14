@@ -47,8 +47,8 @@ addMoreBtns.forEach((button) => {
 		});
 
 		// Append input and button to the container
-		newFieldWrapper.appendChild(removeButton);
 		newFieldWrapper.appendChild(newField);
+		newFieldWrapper.appendChild(removeButton);
 		fieldContainer.appendChild(newFieldWrapper);
 
 		// If lastInputElement is special, add buttons in innerHTML or fieldContainer
