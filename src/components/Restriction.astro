@@ -19,6 +19,7 @@ export interface Restriction {
 const { restriction } = Astro.props;
 const id = restriction.id;
 const display = restriction.display;
+const description = restriction.description;
 const escalation = restriction.escalation;
 const additionalDesc = restriction.additionalDesc;
 const options = restriction.options;
@@ -33,29 +34,33 @@ const additionalInputID = `${id}-extra`;
 <div class="selection-wrapper">
 	<div
 		id={id}
-		class="selection"
+		class="selection tooltip"
 		data-extra-id={additionalInputID}
 		data-escalation={escalation}
 	>
-		<p>{display}</p>
+		<p class="tooltip">
+			{display}
+			<span class="tooltiptext">{description}</span>
+		</p>
 	</div>
 
 	{options && <Choices restriction={restriction} />}
 
 	{!options && additionalDesc && <Inputs restriction={restriction} />}
 </div>
+
 <script>
 	import Escalation from "../scripts/escalation";
 
 	const allSelections = document.querySelectorAll(".selection");
 
 	allSelections.forEach((selection) => {
+		const id = selection.getAttribute("id");
+		const linkedExtraID = selection.getAttribute("data-extra-id");
+		const linkedExtra = document.querySelector(`#${linkedExtraID}`);
+
 		// Add toggle functionality
 		selection.addEventListener("click", () => {
-			const id = selection.getAttribute("id");
-			const linkedExtraID = selection.getAttribute("data-extra-id");
-			const linkedExtra = document.querySelector(`#${linkedExtraID}`);
-
 			selection.classList.toggle("checked");
 
 			switch (selection.classList.contains("checked")) {
@@ -89,11 +94,39 @@ const additionalInputID = `${id}-extra`;
 	.selection {
 		display: block;
 		padding: 1rem;
-		background: lightblue;
+		background: rgb(168, 205, 216);
 		border-top: 1px solid black;
+		position: relative;
+	}
+
+	.selection:hover {
+		border: 3px solid rgb(69, 135, 156);
+	}
+
+	.selection:active {
+		background: rgb(134, 168, 179);
 	}
 
 	.checked {
-		background: #21cf30;
+		background: #1eb32b;
+	}
+
+	.tooltiptext {
+		visibility: hidden;
+		position: absolute;
+		border: 1px solid black;
+		top: 0;
+		left: calc(30%);
+		text-align: center;
+		padding: 1rem;
+		border: 1px solid white;
+		border-radius: 0.5rem;
+		background: #000;
+		color: white;
+		z-index: 222;
+	}
+
+	.tooltip:hover .tooltiptext {
+		visibility: visible;
 	}
 </style>

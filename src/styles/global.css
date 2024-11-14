@@ -15,7 +15,7 @@ ul {
 }
 
 .additional-input {
-	background: rgb(132, 167, 132);
+	background: rgb(131, 160, 168);
 	display: flex;
 	display: none;
 	flex-direction: column;
@@ -42,7 +42,7 @@ input {
 }
 
 input:focus {
-	outline: 1.5px solid rgb(22, 71, 15);
+	outline: 2px solid rgb(22, 71, 15);
 }
 
 .input-wrapper {

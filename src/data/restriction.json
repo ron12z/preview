@@ -1,8 +1,8 @@
 [
 	{
 		"id": "threshold",
-		"display": "WD amount greater than allowed threshold",
-		"description": "WD amount greater than allowed threshold",
+		"display": "Amount",
+		"description": "WD amount greater than allowed threshold ($25k for VIP, $24,999.99 for NOT VIP)",
 		"escalation": "WD greater than [option]",
 		"additionalDesc": "Account Status",
 		"options": {
@@ -13,8 +13,8 @@
 
 	{
 		"id": "account-status",
-		"display": "Account is suspended/closed",
-		"description": "Account is suspended/closed",
+		"display": "Account Status",
+		"description": "Account is suspended or closed",
 		"escalation": "account is [option]",
 		"additionalDesc": "Account Status",
 		"options": {
@@ -26,8 +26,8 @@
 
 	{
 		"id": "name",
-		"display": "Name mismatch",
-		"description": "Name mismatch",
+		"display": "Name Mismatch",
+		"description": "Has 2 or more names in identity tab",
 		"escalation": "[inputCount] different names in account: [slot1]",
 		"additionalDesc": "Names In Account",
 		"slot1": {
@@ -38,15 +38,15 @@
 
 	{
 		"id": "email",
-		"display": "Email mismatch",
-		"description": "Email mismatch",
+		"display": "Email Mismatch",
+		"description": "If there is an email mismatch & the account is less than 1 month old",
 		"escalation": "account less than 1 month old with email name mismatch"
 	},
 
 	{
 		"id": "lost",
 		"display": "Lost/Stolen",
-		"description": "Has lost/stolen failed deposit in the past 7 days",
+		"description": "Has lost or stolen failed deposit in the past 7 days",
 		"escalation": "([slot1]) has been reported lost or stolen",
 		"additionalDesc": "Failed Deposit/s Details",
 		"slot1": {
@@ -58,7 +58,7 @@
 	{
 		"id": "sa1",
 		"display": "Suspicious Activity 1",
-		"description": "Suspicious Activity 1",
+		"description": "Suspicious Activity 1 - Withdrawing to a payment method used for a small deposit with larger deposits made with other payment method/s",
 		"escalation": "withdrawing to a payment method ([slot1]) used for a small deposit with larger deposits made with ([slot2])",
 		"additionalDesc": "Card Details",
 		"slot1": {
@@ -74,11 +74,11 @@
 	{
 		"id": "sa2",
 		"display": "Suspicious Activity 2",
-		"description": "Suspicious Activity 2",
+		"description": "Suspicious Activity 2 - Customer has attempted to deposit with multiple debit cards in the past 24 hours (3 for first escalation, 2 if already escalated before)",
 		"escalation": "customer has attempted to deposit with multiple debit cards in the past 24 hours - [slot1]",
 		"additionalDesc": "Debit Cards Used",
 		"slot1": {
-			"Card Number": 3,
+			"Card Number": 2,
 			"addMoreButton": true
 		}
 	},
@@ -86,28 +86,28 @@
 	{
 		"id": "cashout",
 		"display": "Cashed out",
-		"description": "Cashed out",
+		"description": "If they did cash out any bets before the withdrawal and the recent deposit and using different payment method for deposit and withdrawal",
 		"escalation": "cashed out bet before the latest withdrawal"
 	},
 
 	{
 		"id": "short-odds",
 		"display": "Short Odds",
-		"description": "Short Odds",
+		"description": "If they have Bet Win with 1 (1.00) - 1.14 Odds in between withdrawal and deposit in question and using different payment method for deposit and withdrawal",
 		"escalation": "short odds bet placement"
 	},
 
 	{
 		"id": "outside-us",
 		"display": "Account is Geo locating outside of the US",
-		"description": "Account is Geo locating outside of the US",
+		"description": "If they are geolocating outside of the United States within the last 24 hours",
 		"escalation": "account is Geo locating outside of the US"
 	},
 
 	{
 		"id": "new-location",
 		"display": "New device, new location",
-		"description": "Account is on a new device in a new location",
+		"description": "If they are on a new device (device uuid) in a new location within the last 24 hours",
 		"escalation": "account is on a new device in a new location"
 	},
 
@@ -134,14 +134,14 @@
 	{
 		"id": "zip-code",
 		"display": "ZIP Code",
-		"description": "Has 2 or more ZIP Codes",
+		"description": "2 or more zip codes used within past 24 hours - Applies only if there are other restriction/s",
 		"escalation": "has 2 or more zip codes used within the past 24 hours"
 	},
 
 	{
 		"id": "baccarat-abuse",
 		"display": "Baccarat Abuse",
-		"description": "Baccarat Abuse - If in the 'Casino History' tab you see the total amount of bets to be equal or similar to the payout they are receiving and deposit and withdrawal are two different payment",
+		"description": "In  ‘Casino History’ tab you see the total amount of bets to be equal or similar to the payout they are receiving and deposit and withdrawal are two different payment method",
 		"escalation": "baccarat abuse"
 	},
 
@@ -162,7 +162,7 @@
 	{
 		"id": "nj-client",
 		"display": "NJ Client withdrawing to Licensed State",
-		"description": "NJ Client is withdrawing on a Licensed state such as PA/WV",
+		"description": "NJ Client is withdrawing on a Licensed state such as PA/WV/NJ",
 		"escalation": "NJ Client withdrawing in [option] - No License",
 		"additionalDesc": "Client Withdrawal State",
 		"options": {
