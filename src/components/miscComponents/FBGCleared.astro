@@ -8,3 +8,16 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	import { getCurrentTime } from "../../scripts/miscUtils";
+
+	function updateCleared() {
+		const cleared = document.querySelector("#cleared")!;
+		const currentTime = getCurrentTime();
+		cleared.innerHTML = `FBG Withdrawals Handled by MNL Team <b>CLEARED</b> - Updated as of ${currentTime}`;
+	}
+
+	updateCleared();
+	setInterval(updateCleared, 1000);
+</script>

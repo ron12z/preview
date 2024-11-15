@@ -14,7 +14,7 @@ hr {
 
 h4 {
 	font-weight: 700;
-	font-size: large;
+	font-size: 1.25rem;
 
 	&::after {
 		content: ":";
@@ -45,9 +45,10 @@ h4 {
 	gap: 0.2rem;
 	justify-content: center;
 	padding-left: 0.5rem;
+	font-size: 1.1rem;
 
 	& > p::before {
-		content: "- ";
+		content: "📌 ";
 	}
 
 	& a {

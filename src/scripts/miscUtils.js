@@ -1,4 +1,4 @@
-function getCurrentTime() {
+export function getCurrentTime() {
 	const now = new Date();
 	let hours = now.getHours();
 	const minutes = now.getMinutes();
@@ -9,23 +9,3 @@ function getCurrentTime() {
 	const timeFormatted = hours + ":" + minutesFormatted + " " + amPm;
 	return timeFormatted;
 }
-
-function replaceAllText() {
-	var walker = document.createTreeWalker(
-		document.body, // root node
-		NodeFilter.SHOW_TEXT, // filtering only text nodes
-		null,
-		false
-	);
-
-	while (walker.nextNode()) {
-		if (walker.currentNode.nodeValue.trim())
-			// if it's not empty(whitespaced) node
-			walker.currentNode.nodeValue = walker.currentNode.nodeValue.replace(
-				"[timeNow]",
-				getCurrentTime()
-			);
-	}
-}
-
-setInterval(replaceAllText, 300);
