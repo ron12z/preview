@@ -38,10 +38,10 @@ hr {
 	padding-left: 0.5rem;
 
 	& > p::before {
-		content: "〰 ";
+		content: "- ";
 	}
 
-	& > p > a {
+	& a {
 		color: rgb(0, 35, 148);
 		/* text-decoration: underline; */
 	}
