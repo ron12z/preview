@@ -12,6 +12,15 @@ hr {
 	border-style: dashed;
 }
 
+h4 {
+	font-weight: 700;
+	font-size: large;
+
+	&::after {
+		content: ":";
+	}
+}
+
 .updates-list {
 	display: flex;
 	flex-direction: column;
@@ -44,14 +53,5 @@ hr {
 	& a {
 		color: rgb(0, 35, 148);
 		/* text-decoration: underline; */
-	}
-}
-
-h4 {
-	font-weight: 700;
-	font-size: large;
-
-	&::after {
-		content: ":";
 	}
 }

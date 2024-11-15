@@ -1,17 +1,32 @@
 ---
-import { bigint } from "astro:schema";
 import MainLayout from "../layouts/MainLayout.astro";
 import "../styles/misc.css";
+import RelatedUsers from "../components/miscComponents/RelatedUsers.astro";
+import ForPosting from "../components/miscComponents/ForPosting.astro";
+import WDCancellation from "../components/miscComponents/WDCancellation.astro";
+import FBGCleared from "../components/miscComponents/FBGCleared.astro";
 
 const title = "Misc";
 ---
 
 <MainLayout title={title}>
-	<div class="misc-content"></div>
-
+	<div class="misc-content">
+		<RelatedUsers />
+		<hr />
+		<ForPosting />
+		<hr />
+		<FBGCleared />
+		<hr />
+		<WDCancellation />
+	</div>
 	<!--  -->
 	<p slot="footer">
 		I made this just for me, but feel free to use it if you think it's helpful
 		for you 🙂
 	</p>
 </MainLayout>
+
+<script>
+	import "../scripts/miscCopy";
+	import "../scripts/miscUtils";
+</script>

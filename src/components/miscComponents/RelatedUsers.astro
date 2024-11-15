@@ -1,0 +1,30 @@
+---
+
+---
+
+<div class="text-group" id="approve">
+	<h4 class="desc">
+		Has 2 or more related users but <good>can be APPROVED</good>
+	</h4>
+	<div class="text-wrapper">
+		<h5>Related Users Info:</h5>
+		<div class="users-wrapper">
+			<input type="number" id="userNum" placeholder="Related Users count" />
+			<input type="number" id="duplicate" placeholder="Duplicates count" />
+			<input type="number" id="unverified" placeholder="Unverified count" />
+			<button id="resetUsers">RESET</button>
+		</div>
+		<div class="flexrow">
+			<div class="clickable">
+				<p class="text approve" id="approve1"></p>
+			</div>
+			<div class="clickable">
+				<p class="text approve" id="approve2"></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	import "../../scripts/miscRelatedUsers";
+</script>
