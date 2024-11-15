@@ -1,10 +1,15 @@
 ---
+import { bigint } from "astro:schema";
 import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/misc.css";
 
 const title = "Misc";
 ---
 
 <MainLayout title={title}>
+	<div class="misc-content"></div>
+
+	<!--  -->
 	<p slot="footer">
 		I made this just for me, but feel free to use it if you think it's helpful
 		for you 🙂

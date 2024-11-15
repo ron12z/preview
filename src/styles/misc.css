@@ -1,0 +1,36 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.misc-content {
+	display: flex;
+	flex-direction: column;
+	background: rgba(168, 205, 216, 0.753);
+
+	margin: 1.5rem;
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+}
+
+.popup {
+	position: absolute;
+	background: purple;
+	right: 0.3rem;
+	top: 0.3rem;
+	padding: 0.4rem;
+	border-radius: 0.4rem;
+	opacity: 1;
+	color: white;
+}
