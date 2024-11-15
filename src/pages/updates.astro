@@ -1,7 +1,150 @@
 ---
+import Update from "../components/updateComponents/Update.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+
+// css
+import "../styles/updates.css";
 
 const title = "Updates";
 ---
 
-<MainLayout title={title} />
+<MainLayout title={title}>
+	<div class="updates-list">
+		<Update date="November 15, 2024">
+			<p>
+				Created this new web tool (Escalator v2) and, made several changes.
+				Mainly for me to make the site easier to update
+			</p>
+			<p>Changed most of the styling in all pages</p>
+			<p>Changed the displayed text of all restriction selections</p>
+			<p>
+				The complete detail of each restriction will now be displayed when
+				hovered
+			</p>
+			<p>
+				The order of restrictions in escalation is now based on what you click
+				(check) first, unlike before that the order is based on how I created
+				the site
+			</p>
+			<p>
+				Added clickable buttons in [Device Sharing: First Escalation] and
+				[Device Sharing: Previously Escalated] to add account status
+			</p>
+		</Update>
+
+		<hr />
+
+		<Update date="October 22, 2024">
+			<p>
+				Added option to add more cards used for larger deposits in SA1
+				escalation
+			</p>
+		</Update>
+
+		<hr />
+
+		<Update date="October 21, 2024">
+			<p>Updated "Amount is greater than" escalation</p>
+		</Update>
+
+		<hr />
+
+		<Update date="October 10, 2024">
+			<p>
+				Added shortcut: Press C to copy escalation. (Still won't work if there's
+				no escalation checked)
+			</p>
+			<p>Changed default to "No restrictions/escalations selected."</p>
+			<p>Changed background</p>
+			<p>Changed header background color</p>
+		</Update>
+
+		<hr />
+
+		<Update date="October 8, 2024">
+			<p>Disabled fixed footer</p>
+			<p>Fixed whitespace not being removed from SA1 inputs</p>
+			<p>
+				Changed "Amount is more than $5,000" to "Total amount is more than
+				$10,000"
+			</p>
+			<p>Removed "Has 4 or more related users"</p>
+			<p>
+				Added 4 new escalations based on GeoComply - <a
+					href="https://docs.google.com/spreadsheets/d/11LG_4njZQ9QNBK3g8A37aXZXLqTpZdiR0DE8Zg2EvCQ/edit?gid=1888138481#gid=1888138481&range=A22:B22"
+				>
+					Device Sharing Decision Table
+				</a>
+			</p>
+		</Update>
+
+		<hr />
+
+		<Update date="October 1, 2024">
+			<p>Changed placeholder text for no escalation</p>
+			<p>
+				Changed cursor to 🚫 when there's no escalation, indicating that copying
+				is not allowed.
+			</p>
+			<p>
+				Changed "Copied to clipboard!" pop up location and added a fade-out
+				transition.
+			</p>
+		</Update>
+
+		<hr />
+
+		<Update date="September 25, 2024">
+			<p>Changed tab icon for all urls</p>
+			<p>
+				Added 2 new escalations based on <a
+					href="https://docs.google.com/spreadsheets/d/11LG_4njZQ9QNBK3g8A37aXZXLqTpZdiR0DE8Zg2EvCQ/edit?gid=1888138481#gid=1888138481&range=D3:E4"
+					>FBG WD Notes Google Sheet</a
+				>
+			</p>
+			<p>
+				For name mismatch escalations, number of different names will now
+				reflect the count of non-empty inputs (instead of always "2 different
+				names")
+			</p>
+			<p>
+				Created another tool: <a href="https://fbgfraud.us.kg/misc"
+					>fbgfraud.us.kg/misc</a
+				> for my personal use. It's still under development, and I'm planning to
+				add more helpful snippets in the future. Feel free to use it if you like.
+			</p>
+		</Update>
+
+		<hr />
+
+		<Update date="September 20, 2024">
+			<p>
+				Created new domain for escalator: <a href="https://fbgfraud.us.kg/"
+					>fbgfraud.us.kg</a
+				>. No issues opening the escalator from old link, you'll just be
+				redirected to the updated one.
+			</p>
+		</Update>
+
+		<hr />
+
+		<Update date="September 19, 2024">
+			<p>Header changes color when there's escalation</p>
+			<p>
+				Fixed escalation result not updating when clicking outside after pasting
+				in an input field
+			</p>
+			<p>Escalation result will now ignore whitespace from input fields</p>
+			<p>Edited footer</p>
+		</Update>
+
+		<hr />
+
+		<Update date="September 15, 2024">
+			<p>Added updates link for changelogs</p>
+			<p>Disabled click to copy when there's no escalations</p>
+			<p>Changed "Copied to clipboard" popup background</p>
+			<p>Disabled text-select for escalation and selections</p>
+		</Update>
+	</div>
+</MainLayout>

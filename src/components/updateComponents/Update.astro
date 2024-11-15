@@ -1,0 +1,10 @@
+---
+const { date } = Astro.props;
+---
+
+<div class="update-group">
+	<h4 class="date">{date}</h4>
+	<div class="updates-wrapper">
+		<slot />
+	</div>
+</div>
