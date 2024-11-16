@@ -1,7 +1,7 @@
 function copyFormattedContent(event) {
 	// Default
 	// Find the <p class="text"> element within the clicked text-group
-	const textElement = event.currentTarget.querySelector("p.text");
+	const textElement = event.currentTarget.querySelector("p");
 	const result = document.querySelector("#result");
 
 	// Main process

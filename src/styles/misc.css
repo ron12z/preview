@@ -24,6 +24,10 @@ good {
 	color: rgb(84, 5, 129);
 }
 
+bad {
+	color: rgb(136, 40, 40);
+}
+
 h4 {
 	font-weight: 700;
 	font-size: large;
@@ -122,4 +126,9 @@ button {
 	margin-block: 0.2rem;
 	font-size: large;
 	cursor: pointer;
+
+	& p::after {
+		content: " -Click to copy";
+		color: #ffffff85;
+	}
 }
