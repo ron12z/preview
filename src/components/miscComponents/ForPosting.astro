@@ -1,5 +1,5 @@
 ---
-
+import fbgQueues from "../../data/fbgQueues.json";
 ---
 
 <div class="text-group" id="indivs">
@@ -10,12 +10,23 @@
 		</div>
 		<button id="miscReset">RESET</button>
 		<div class="choices">
-			<p class="choice selected" id="VIPL">Vip Withdrawal- Licensed States</p>
-			<p class="choice" id="VIPNL">Vip Withdrawal- Non Licensed States</p>
-			<p class="choice" id="Cash">Withdrawal- Cash At Cage</p>
-			<p class="choice" id="IN">Withdrawals - Indiana</p>
-			<p class="choice" id="NL">Withdrawals - Non-Licensed</p>
-			<p class="choice" id="PA">Withdrawals - Pennsylvania</p>
+			{
+				fbgQueues.map((queueItem) => (
+					<>
+						<div id={queueItem.id} class="choice">
+							<p>{queueItem.name}</p>
+							<div id={`${queueItem.id}-count`} class="choice-count">
+								<p class="label">Items Left:</p>
+								<input
+									id={`${queueItem.id}-input`}
+									type="number"
+									placeholder={"Items Left"}
+								/>
+							</div>
+						</div>
+					</>
+				))
+			}
 		</div>
 	</div>
 </div>
@@ -49,6 +60,10 @@
 	.choice {
 		padding: 0.6rem;
 		border-top: 1px solid black;
+		display: flex;
+
+		align-items: center;
+		height: 3rem;
 	}
 
 	.choice:first-child {
@@ -63,4 +78,19 @@
 	.choice:active {
 		background: rgb(134, 168, 179);
 	}
+
+	.choice-count {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		display: none;
+		position: absolute;
+		left: 30%;
+
+		input {
+			width: 50%;
+		}
+	}
 </style>
+
+<script src="../../scripts/forPosting"></script>
