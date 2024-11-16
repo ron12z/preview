@@ -33,6 +33,7 @@ function CtoCopy(event) {
 const result = document.querySelector("#escalation-result");
 const header = document.querySelector("header");
 const headerBG = window.getComputedStyle(header).backgroundColor;
+const headerColor = window.getComputedStyle(header).color;
 
 export function setEscalationHandler() {
 	const activeEscalations = getEscalations();
@@ -42,12 +43,14 @@ export function setEscalationHandler() {
 		result.classList.remove("no-content");
 		document.addEventListener("keydown", CtoCopy);
 		header.style.background = "rgb(160, 60, 60)";
+		header.style.color = "rgb(255 198 243)";
 		result.style.cursor = "pointer";
 	} else {
 		result.removeEventListener("click", handleEscalationClick);
 		result.classList.add("no-content");
 		document.removeEventListener("keydown", CtoCopy);
 		header.style.background = `${headerBG}`;
+		header.style.color = `${headerColor}`;
 		result.style.cursor = "not-allowed";
 	}
 }
