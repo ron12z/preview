@@ -21,6 +21,7 @@ resetBtn.addEventListener("click", () => {
 		choice.classList.remove("selected");
 		choice.querySelector("input").value = "";
 		showHideInput(choice);
+		updateResult();
 	});
 });
 
