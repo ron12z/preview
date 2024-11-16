@@ -130,5 +130,6 @@ button {
 	& p::after {
 		content: " -Click to copy";
 		color: #ffffff85;
+		display: inline-block;
 	}
 }
