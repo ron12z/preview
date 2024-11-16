@@ -1,0 +1,31 @@
+[
+	{
+		"id": "VIPL",
+		"name": "Vip Withdrawal- Licensed States"
+	},
+
+	{
+		"id": "VIPNL",
+		"name": "Vip Withdrawal- Non Licensed States"
+	},
+
+	{
+		"id": "Cash",
+		"name": "Withdrawal- Cash At Cage"
+	},
+
+	{
+		"id": "IN",
+		"name": "Withdrawals - Indiana"
+	},
+
+	{
+		"id": "NL",
+		"name": "Withdrawals - Non-Licensed"
+	},
+
+	{
+		"id": "PA",
+		"name": "Withdrawals - Pennsylvania"
+	}
+]
