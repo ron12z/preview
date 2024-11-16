@@ -72,7 +72,7 @@ function updateResult() {
 
 		result.innerHTML = forPostingResult;
 	} else {
-		result.innerHTML = "Please select cleared queues below:<br>";
+		result.innerHTML = "Please select cleared queues below:</br>";
 	}
 }
 
