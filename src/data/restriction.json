@@ -19,8 +19,7 @@
 		"additionalDesc": "Account Status",
 		"options": {
 			"Suspended": "suspended",
-			"Closed": "closed",
-			"Timeout": "on timeout"
+			"Closed": "closed"
 		}
 	},
 
@@ -114,7 +113,7 @@
 	{
 		"id": "licensed-state",
 		"display": "Licensed State (PA, WV, NJ)",
-		"description": "Licensed State (PA, WV)",
+		"description": "Licensed State (PA, WV, NJ)",
 		"escalation": "([option]) Account, no license",
 		"additionalDesc": "State",
 		"options": {
@@ -133,14 +132,14 @@
 
 	{
 		"id": "zip-code",
-		"display": "ZIP Code",
+		"display": "ZIP Code (MI Only)",
 		"description": "2 or more zip codes used within past 24 hours - Applies only if there are other restriction/s",
 		"escalation": "has 2 or more zip codes used within the past 24 hours"
 	},
 
 	{
 		"id": "baccarat-abuse",
-		"display": "Baccarat Abuse",
+		"display": "Baccarat Abuse (MI, PA, WV only)",
 		"description": "In  ‘Casino History’ tab you see the total amount of bets to be equal or similar to the payout they are receiving and deposit and withdrawal are two different payment method",
 		"escalation": "baccarat abuse"
 	},

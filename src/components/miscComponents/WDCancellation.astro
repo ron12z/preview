@@ -12,9 +12,9 @@ import WDCancellationItem from "./WDCancellationItem.astro";
 			<p>
 				Sorry, this workflow should be used exclusively for <b>
 					withdrawal cancellation requests
-				</b>. If you have any questions or need approval for this transaction,
-				it would be best to post it in the channel without using the workflow so
-				our senior agents can handle it accordingly. Thank you!
+				</b> . If you have any questions or need approval for this transaction, it
+				would be best to post it in the channel without using the workflow so our
+				US Team can handle it accordingly. Thank you!
 			</p>
 		</WDCancellationItem>
 
@@ -35,6 +35,17 @@ import WDCancellationItem from "./WDCancellationItem.astro";
 			<p>
 				Sorry, we cannot cancel this transaction because it's already in the
 				status of <b>WITHDRAWAL_COMPLETED</b>. Thank you!
+			</p>
+		</WDCancellationItem>
+
+		<WDCancellationItem
+			label="Status: WITHDRAWAL_SUBMITTED AND PAYMENT METHOD IS TRUSTLY"
+		>
+			<p>
+				The client is withdrawing via trustly and it is under the
+				<b>withdrawal_submitted</b> status. On this case, the client will wait to
+				time-out the withdrawal within an hour as it will be cancelled on its own
+				and the funds will be returned to it's account.
 			</p>
 		</WDCancellationItem>
 
