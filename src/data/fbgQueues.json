@@ -27,5 +27,9 @@
 	{
 		"id": "PA",
 		"name": "Withdrawals - Pennsylvania"
+	},
+	{
+		"id": "WV",
+		"name": "Withdrawals - West Virginia"
 	}
 ]
