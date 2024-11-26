@@ -4,6 +4,7 @@ const unverified = document.querySelector("#unverified");
 const approve = document.querySelector("#approve");
 const approveChoice1 = document.querySelector("#approve1");
 const approveChoice2 = document.querySelector("#approve2");
+const approveChoice3 = document.querySelector("#approve3");
 const resetUsers = document.querySelector("#resetUsers");
 
 function fillChoices() {
@@ -11,6 +12,7 @@ function fillChoices() {
 	const dups = duplicate.value.trim();
 	const unvfs = unverified.value.trim();
 	let approve1content = "";
+	let approve3content = "";
 
 	if (dups != "" && unvfs == "") {
 		approve1content = `Client has ${num} related users - ${dups} duplicate device links. No fraud concerns. WD approved.`;
@@ -26,8 +28,12 @@ function fillChoices() {
 	approveChoice1.textContent = approve1content;
 
 	if (num == 0) {
-		approveChoice1.textContent = "Enter number of related users.";
-		approveChoice2.textContent = "Enter number of related users.";
+		approveChoice1.textContent =
+			"Related users + unverified/duplicate device links here.";
+		approveChoice2.textContent = "Related users + reviewed by SA here.";
+		approveChoice3.textContent = "Related users + no device links here.";
+	} else {
+		approveChoice3.textContent = `Client has ${num} related users, no device links. No fraud concerns. WD approved.`;
 	}
 }
 
