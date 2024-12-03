@@ -12,7 +12,7 @@ const { title = "Default Title" } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/fbg.ico" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
@@ -22,14 +22,7 @@ const { title = "Default Title" } = Astro.props;
 		<main>
 			<slot />
 		</main>
-		<Footer>
-			<slot name="footer">
-				<p>
-					For suggestions/corrections/feedback, please inform TL Chaddy or me
-					(aaron.talua.xc) via Google Chat/Slack 🙂
-				</p>
-			</slot>
-		</Footer>
+		<Footer />
 	</body>
 </html>
 
