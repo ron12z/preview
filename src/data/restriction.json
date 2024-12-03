@@ -1,19 +1,19 @@
 [
 	{
 		"id": "threshold",
-		"display": "Amount",
-		"description": "WD amount greater than allowed threshold ($25k for VIP, $24,999.99 for NOT VIP)",
+		"display": "Withdrawal Amount Flag",
+		"description": "Withdrawing too much",
 		"escalation": "WD greater than [option]",
 		"additionalDesc": "Account Status",
 		"options": {
-			"VIP": "$25k",
-			"Not VIP": "$24,999.99"
+			"VIP": "$1M",
+			"Not VIP": "$500k"
 		}
 	},
 
 	{
 		"id": "account-status",
-		"display": "Account Status",
+		"display": "Inactive Account",
 		"description": "Account is suspended or closed",
 		"escalation": "account is [option]",
 		"additionalDesc": "Account Status",
@@ -25,7 +25,7 @@
 
 	{
 		"id": "name",
-		"display": "Name Mismatch",
+		"display": "Multiple Names",
 		"description": "Has 2 or more names in identity tab",
 		"escalation": "[inputCount] different names in account: [slot1]",
 		"additionalDesc": "Names In Account",
@@ -36,195 +36,68 @@
 	},
 
 	{
-		"id": "email",
-		"display": "Email Mismatch",
-		"description": "If there is an email mismatch & the account is less than 1 month old",
-		"escalation": "account less than 1 month old with email name mismatch"
+		"id": "susp-trans",
+		"display": "Suspicious Transactions",
+		"description": "Account has suspicious transactions",
+		"escalation": "account transactions are suspicious"
 	},
 
 	{
-		"id": "lost",
-		"display": "Lost/Stolen",
-		"description": "Has lost or stolen failed deposit in the past 7 days",
-		"escalation": "([slot1]) has been reported lost or stolen",
-		"additionalDesc": "Failed Deposit/s Details",
-		"slot1": {
-			"Account Number": 1,
-			"addMoreButton": true
-		}
-	},
-
-	{
-		"id": "sa1",
-		"display": "Suspicious Activity 1",
-		"description": "Suspicious Activity 1 - Withdrawing to a payment method used for a small deposit with larger deposits made with other payment method/s",
-		"escalation": "withdrawing to a payment method ([slot1]) used for a small deposit with larger deposits made with ([slot2])",
-		"additionalDesc": "Card Details",
-		"slot1": {
-			"WD w/ Small Deposit": 1,
-			"addMoreButton": true
-		},
-		"slot2": {
-			"Large Deposit": 1,
-			"addMoreButton": true
-		}
-	},
-
-	{
-		"id": "sa2",
-		"display": "Suspicious Activity 2",
-		"description": "Suspicious Activity 2 - Customer has attempted to deposit with multiple debit cards in the past 24 hours (3 for first escalation, 2 if already escalated before)",
-		"escalation": "customer has attempted to deposit with multiple debit cards in the past 24 hours - [slot1]",
-		"additionalDesc": "Debit Cards Used",
-		"slot1": {
-			"Card Number": 2,
-			"addMoreButton": true
-		}
-	},
-
-	{
-		"id": "cashout",
-		"display": "Cashed out",
-		"description": "If they did cash out any bets before the withdrawal and the recent deposit and using different payment method for deposit and withdrawal",
-		"escalation": "cashed out bet before the latest withdrawal"
-	},
-
-	{
-		"id": "short-odds",
-		"display": "Short Odds",
-		"description": "If they have Bet Win with 1 (1.00) - 1.14 Odds in between withdrawal and deposit in question and using different payment method for deposit and withdrawal",
-		"escalation": "short odds bet placement"
-	},
-
-	{
-		"id": "outside-us",
-		"display": "Account is Geo locating outside of the US",
-		"description": "If they are geolocating outside of the United States within the last 24 hours",
-		"escalation": "account is Geo locating outside of the US"
-	},
-
-	{
-		"id": "new-location",
-		"display": "New device, new location",
-		"description": "If they are on a new device (device uuid) in a new location within the last 24 hours",
-		"escalation": "account is on a new device in a new location"
-	},
-
-	{
-		"id": "licensed-state",
-		"display": "Licensed State (PA, WV, NJ)",
-		"description": "Licensed State (PA, WV, NJ)",
-		"escalation": "([option]) Account, no license",
-		"additionalDesc": "State",
+		"id": "sampleonly1",
+		"display": "Useless Sample 1 - Has Options",
+		"description": "More detailed description of Sample 1",
+		"escalation": "[option] is chosen",
+		"additionalDesc": "Describe your options here",
 		"options": {
-			"PA": "PA",
-			"WV": "WV",
-			"NJ": "NJ"
+			"Option 1": "OPTION 1",
+			"Option 2": "OPTION 2"
 		}
 	},
 
 	{
-		"id": "no-initial-deposit",
-		"display": "No initial deposit",
-		"description": "Account has no initial deposit and winnings NOT from free bet or PB Migrated funds",
-		"escalation": "no intial deposit"
-	},
-
-	{
-		"id": "zip-code",
-		"display": "ZIP Code (MI Only)",
-		"description": "2 or more zip codes used within past 24 hours - Applies only if there are other restriction/s",
-		"escalation": "has 2 or more zip codes used within the past 24 hours"
-	},
-
-	{
-		"id": "baccarat-abuse",
-		"display": "Baccarat Abuse (MI, PA, WV only)",
-		"description": "In  ‘Casino History’ tab you see the total amount of bets to be equal or similar to the payout they are receiving and deposit and withdrawal are two different payment method",
-		"escalation": "baccarat abuse"
-	},
-
-	{
-		"id": "no-permission",
-		"display": "No permission to Open in NATS",
-		"description": "No permission to Open in NATS - NJ/PA/WV Client",
-		"escalation": "[slot1] client withdrawing to [slot2], no permission to open in NATS",
-		"additionalDesc": "Client States Info",
+		"id": "sampleonly2",
+		"display": "Useless Sample 2 - With Input",
+		"description": "More detailed description of Sample 2",
+		"escalation": "Has multiple inputs entered: [slot1]",
+		"additionalDesc": "Describe your inputs here",
 		"slot1": {
-			"Client State": 1
+			"Sample": 3
+		}
+	},
+
+	{
+		"id": "sampleonly3",
+		"display": "Useless Sample 3 - With Input + Add More",
+		"description": "More detailed description of Sample 3",
+		"escalation": "[slot1] has been entered (so far)",
+		"additionalDesc": "Describe your inputs here",
+		"slot1": {
+			"Sample": 3,
+			"addMoreButton": true
+		}
+	},
+
+	{
+		"id": "sampleonly4",
+		"display": "Useless Sample 4",
+		"description": "More detailed description of Sample 4",
+		"additionalDesc": "Describe your inputs here",
+		"escalation": "Group 1 contains: [slot1] and Group 2 contains: [slot2]",
+		"slot1": {
+			"Slot1": 2,
+			"addMoreButton": true
 		},
+
 		"slot2": {
-			"Withdrawing to: (PA/WV)": 1
+			"Slot2": 1,
+			"addMoreButton": true
 		}
 	},
 
 	{
-		"id": "nj-client",
-		"display": "NJ Client withdrawing to Licensed State",
-		"description": "NJ Client is withdrawing on a Licensed state such as PA/WV/NJ",
-		"escalation": "NJ Client withdrawing in [option] - No License",
-		"additionalDesc": "Client Withdrawal State",
-		"options": {
-			"PA": "PA",
-			"WV": "WV",
-			"NJ": "NJ"
-		}
-	},
-
-	{
-		"id": "device-sharing-initial",
-		"display": "Device Sharing: First Escalation",
-		"description": "Device Sharing - If device sharing with any (not already known per NATS or Sift notes) Open, Timeout, Self Exclusion, Suspended or Closed Account.",
-		"escalation": "has [slot1] related users - New device links to [slot2]",
-		"additionalDesc": "Number of Related Users and Accounts Details",
-		"slot1": {
-			"Related Users": 1
-		},
-		"slot2": {
-			"Account Number": 1,
-			"addMoreButton": true,
-			"hasStatusOption": true
-		}
-	},
-
-	{
-		"id": "device-sharing-next",
-		"display": "Device Sharing: Previously Escalated",
-		"description": "Device Sharing - If there's a new device on the account which is not part of the previous escalation.",
-		"escalation": "now has [slot1] related users - device sharing with new account [slot2]",
-		"additionalDesc": "Number of Related Users and Accounts Details",
-		"slot1": {
-			"Related Users": 1
-		},
-		"slot2": {
-			"Account Number": 1,
-			"addMoreButton": true,
-			"hasStatusOption": true
-		}
-	},
-
-	{
-		"id": "device-sharing-four",
-		"display": "Device Sharing: 4+ related users",
-		"description": "Device Sharing - If device sharing with 4+ active, suspended, or closed accounts that are not already known then do not need to include account numbers in notes",
-		"escalation": "has [slot1] related users - [slot2] accounts on devices",
-		"additionalDesc": "Number of Related Users and Number of Linked Devices",
-		"slot1": {
-			"Related Users": 1
-		},
-		"slot2": {
-			"Linked Devices": 1
-		}
-	},
-
-	{
-		"id": "device-sharing-unable",
-		"display": "Device Sharing: Can't search amelco in NATS",
-		"description": "Device Sharing - If unable to view the amelco in NATS probably NJ or PA region",
-		"escalation": "sharing with [slot1] account, unable to view",
-		"additionalDesc": "Client States Info",
-		"slot1": {
-			"Client State": 1
-		}
+		"id": "sampleonly5",
+		"display": "Useless Sample 5",
+		"description": "More detailed description of Sample 5",
+		"escalation": "sample escalation note"
 	}
 ]

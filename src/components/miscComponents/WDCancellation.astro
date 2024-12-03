@@ -3,99 +3,82 @@ import WDCancellationItem from "./WDCancellationItem.astro";
 ---
 
 <div class="wd-cancellation">
-	<h4>Withdrawal Cancellation <bad>(Except PA, NJ, WV)</bad> Replies</h4><div
-		class="group-wrapper"
-	>
-		<WDCancellationItem
-			label="Used Withdrawal Cancellation workflow but NOT REQUESTING FOR CANCELLATION"
+	<h4>Cases Group</h4><div class="group-wrapper">
+		<WDCancellationItem label="Sample Label 1">
+			<p>
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam
+				adipisci vero unde? Reiciendis temporibus libero quisquam dicta
+				voluptate doloribus voluptas, possimus ex enim soluta, minus unde velit
+				quae labore perferendis?
+			</p>
+		</WDCancellationItem>
+
+		<WDCancellationItem label="Sample Label 2">
+			<p>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi,
+				dolor. Aspernatur, vero veritatis sint vel laudantium nostrum quis
+				deserunt cupiditate repudiandae adipisci consequuntur nulla, nihil
+				architecto, optio corrupti! Sed, laboriosam.
+			</p>
+		</WDCancellationItem>
+
+		<WDCancellationItem label="Sample Label 3">
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga sequi
+				deleniti fugiat animi explicabo vero recusandae, eligendi consequuntur
+				necessitatibus repellat consectetur dicta. Ullam repellendus in nesciunt
+				obcaecati ex praesentium corporis?
+			</p></WDCancellationItem
 		>
-			<p>
-				Sorry, this workflow should be used exclusively for <b>
-					withdrawal cancellation requests
-				</b> . If you have any questions or need approval for this transaction, it
-				would be best to post it in the channel without using the workflow so our
-				US Team can handle it accordingly. Thank you!
-			</p>
-		</WDCancellationItem>
-
-		<WDCancellationItem
-			label="Used Withdrawal Cancellation workflow but REFUND RELATED"
-		>
-			<p>
-				Hi! It looks like this is related to refund. Please note that this
-				workflow is specifically for <b>withdrawal cancellation requests</b>.
-				Deposit refund is for Payments Team. However, you can post this on a new
-				thread without using the cancellation workflow, or with the Payments
-				Escalation 2.0 workflow so that our US Counterpart can check this and
-				provide appropriate course of action for your concern. Thank you!
-			</p>
-		</WDCancellationItem>
-
-		<WDCancellationItem label="Status: WITHDRAWAL_COMPLETED">
-			<p>
-				Sorry, we cannot cancel this transaction because it's already in the
-				status of <b>WITHDRAWAL_COMPLETED</b>. Thank you!
-			</p>
-		</WDCancellationItem>
-
-		<WDCancellationItem
-			label="Status: WITHDRAWAL_SUBMITTED AND PAYMENT METHOD IS TRUSTLY"
-		>
-			<p>
-				The client is withdrawing via trustly and it is under the
-				<b>withdrawal_submitted</b> status. On this case, the client will wait to
-				time-out the withdrawal within an hour as it will be cancelled on its own
-				and the funds will be returned to it's account.
-			</p>
-		</WDCancellationItem>
-
-		<WDCancellationItem label="Status: WITHDRAWAL_SUBMITTED">
-			<p>
-				Sorry, we are not allowed to cancel this withdrawal because it's already
-				in <b>WITHDRAWAL_SUBMITTED</b> status. Thank you!
-			</p>
-		</WDCancellationItem>
-
-		<WDCancellationItem label="Status: WITHDRAWAL_ATTENTION_REQUIRED">
-			<p>
-				Sorry, this transaction cannot be cancelled as it had already passed the
-				approval status and is now in the status of <b
-					>WITHDRAWAL_ATTENTION_REQUIRED</b
-				>. Thank you!
-			</p>
-		</WDCancellationItem>
-
-		<WDCancellationItem
-			label="Status: WITHDRAWAL_PENDING AND PAYMENT METHOD IS NOT PAPERCHECK"
-		>
-			<p>
-				Sorry, this transaction cannot be cancelled because it's in the status
-				of <b>WITHDRAWAL_PENDING</b>. We can only cancel withdrawals under
-				status of
-				<b>WITHDRAWAL_PENDING</b> if the payment method is <b
-					><i>Papercheck</i></b
-				>. Thank you!
-			</p>
-		</WDCancellationItem>
-
-		<WDCancellationItem
-			label="When asked how to cancel withdrawal on client's end"
-		>
-			<p>
-				To cancel the withdrawal on the client's end, you may provide these
-				steps to the client: <br />
-				<br />
-				1. Select the Account page button in the top right <br />
-				2. Scroll down to Account Activity <br />
-				3. Select the Withdrawal <br />
-				4. Scroll down to the Cancel Withdrawal button.<br />
-				<br />
-				If the client is not able to see the cancellation button, sometimes an app
-				restart helps solve the problem. Thank you!
-			</p>
-		</WDCancellationItem>
 	</div>
+
+	<WDCancellationItem label="Sample Label 4">
+		<p>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor deserunt
+			ullam nisi autem deleniti? Ullam voluptatibus quis nostrum alias? Alias,
+			tempora unde ipsum sunt debitis ullam? Natus deserunt quis tempora?
+		</p>
+	</WDCancellationItem>
+
+	<WDCancellationItem label="Sample Label 5">
+		<p>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet molestiae
+			quod mollitia deleniti et at ipsam magnam. In veritatis modi, dolore,
+			accusamus sequi, aperiam rem voluptatem fugit voluptate eum distinctio!
+			Dolorum placeat harum expedita tenetur voluptatem laboriosam optio! Optio
+			minima natus totam! Iusto, amet sunt veniam ut ullam labore impedit.
+		</p>
+	</WDCancellationItem>
 </div>
+
+<WDCancellationItem label="Sample Label 6">
+	<p>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, minima id
+		nobis sapiente labore eveniet quibusdam illo esse ullam officiis.
+	</p>
+</WDCancellationItem>
+
+<WDCancellationItem label="Sample Label 7">
+	<p>
+		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias iure itaque
+		nisi voluptatibus adipisci. Magni?
+	</p>
+</WDCancellationItem>
+
+<WDCancellationItem label="Sample Label 8">
+	<p>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, eum maiores
+		aut voluptatibus veniam id officia veritatis eveniet saepe non earum, omnis
+		debitis? Non eligendi fuga quod minima cupiditate, impedit excepturi vitae
+		iure nostrum repudiandae aut animi nobis in dicta nihil eveniet doloremque
+		quis assumenda facere! Id aut voluptates voluptatem amet excepturi molestias
+		totam sapiente ad modi est dolor, dicta iste ratione recusandae beatae
+		debitis, libero velit iure assumenda? Dolorum consectetur impedit dolores.
+		Aperiam, nisi. Fugiat incidunt aspernatur sapiente esse nulla unde dolore
+		dolor eligendi necessitatibus ipsam consequatur neque minima possimus, quasi
+		harum eaque porro dolores odit. Esse, maiores? Odit?
+	</p>
+</WDCancellationItem>
 
 <style>
 	.group-wrapper {

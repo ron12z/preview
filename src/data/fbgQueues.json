@@ -1,35 +1,21 @@
 [
 	{
 		"id": "VIPL",
-		"name": "Vip Withdrawal- Licensed States"
+		"name": "VIP Clients"
 	},
 
 	{
 		"id": "VIPNL",
-		"name": "Vip Withdrawal- Non Licensed States"
+		"name": "VIP2 Clients"
 	},
 
 	{
 		"id": "Cash",
-		"name": "Withdrawal- Cash At Cage"
+		"name": "Regular Clients"
 	},
 
 	{
 		"id": "IN",
-		"name": "Withdrawals - Indiana"
-	},
-
-	{
-		"id": "NL",
-		"name": "Withdrawals - Non-Licensed"
-	},
-
-	{
-		"id": "PA",
-		"name": "Withdrawals - Pennsylvania"
-	},
-	{
-		"id": "WV",
-		"name": "Withdrawals - West Virginia"
+		"name": "Suspicious Clients"
 	}
 ]

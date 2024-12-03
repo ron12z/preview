@@ -15,25 +15,25 @@ function fillChoices() {
 	let approve3content = "";
 
 	if (dups != "" && unvfs == "") {
-		approve1content = `Client has ${num} related users - ${dups} duplicate device links. No fraud concerns. WD approved.`;
+		approve1content = `Client has ${num} related users - ${dups} duplicate device links.`;
 	} else if (dups == "" && unvfs != "") {
-		approve1content = `Client has ${num} related users - ${unvfs} unverified device links. No fraud concerns. WD approved.`;
+		approve1content = `Client has ${num} related users - ${unvfs} unverified device links.`;
 	} else if (dups == "" && unvfs == "") {
 		approve1content = `Client has ${num} related users.`;
 	} else {
-		approve1content = `Client has ${num} related users - ${dups} duplicates and ${unvfs} unverified device links. No fraud concerns. WD approved.`;
+		approve1content = `Client has ${num} related users - ${dups} duplicates and ${unvfs} unverified device links.`;
 	}
 
-	approveChoice2.textContent = `Client has ${num} related users, already reviewed by SA. No fraud concerns. WD approved.`;
+	approveChoice2.textContent = `Client has ${num} related users, previously flagged.`;
 	approveChoice1.textContent = approve1content;
 
 	if (num == 0) {
 		approveChoice1.textContent =
 			"Related users + unverified/duplicate device links here.";
-		approveChoice2.textContent = "Related users + reviewed by SA here.";
-		approveChoice3.textContent = "Related users + no device links here.";
+		approveChoice2.textContent = "Related users + previously flagged.";
+		approveChoice3.textContent = "Related users + no links here.";
 	} else {
-		approveChoice3.textContent = `Client has ${num} related users, no device links. No fraud concerns. WD approved.`;
+		approveChoice3.textContent = `Client has ${num} related users, no links.`;
 	}
 }
 

@@ -54,7 +54,7 @@ function getInputValue(choice) {
 	if (value == "") {
 		result = result.replace("[slot]", "CLEARED");
 	} else {
-		result = result.replace("[slot]", `${value} for review`);
+		result = result.replace("[slot]", `${value} not cleared`);
 	}
 
 	return result;
